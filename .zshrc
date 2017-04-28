@@ -15,5 +15,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# Activate fish-like syntax highlighting
+# Initialize pure prompt
+autoload -U promptinit; promptinit
+prompt pure
+
+# Activate fish-like syntax highlighting (has to be the last line)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
