@@ -14,3 +14,6 @@ zstyle :compinstall filename '/home/rockstar/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+# Activate fish-like syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
