@@ -20,6 +20,10 @@ alias gd="git diff"
 alias gs="git status"
 eval "$(thefuck --alias)"
 
+# Go
+export GOPATH="$HOME/code/go"
+export PATH="$PATH:$GOPATH/bin"
+
 # The following lines were added by compinstall
 # TODO figure out what this is
 zstyle :compinstall filename '/home/rockstar/.zshrc'
