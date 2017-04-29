@@ -196,4 +196,9 @@ bar {
     }
 }
 
+#
+# Miscellaneous:
+#
+focus_follows_mouse false
+
 include /etc/sway/config.d/*
