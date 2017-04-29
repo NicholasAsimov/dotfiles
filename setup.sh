@@ -16,5 +16,14 @@ while getopts "vib" args; do
     esac
 done
 
-# Path where script is located
-script_home=`cd $(dirname "${BASH_SOURCE[0]}") && pwd`
+# Symlink each file in 'files' directory to corresponding location in $HOME
+cd files
+
+for f in `find . -type f`; do
+    filepath=$(realpath $f)
+    ln $params $filepath $HOME/$f
+done
+
+cd ..
+
+# Download zsh-pure-prompt
