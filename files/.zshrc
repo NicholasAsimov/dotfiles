@@ -15,8 +15,9 @@ bindkey "${terminfo[kend]}" end-of-line
 
 # Aliases
 alias ga="git add"
-alias gs="git status"
+alias gc="git commit"
 alias gd="git diff"
+alias gs="git status"
 eval "$(thefuck --alias)"
 
 # The following lines were added by compinstall
