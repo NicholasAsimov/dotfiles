@@ -14,6 +14,7 @@ bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 
 # Aliases
+alias ga="git add"
 alias gs="git status"
 alias gd="git diff"
 eval "$(thefuck --alias)"
