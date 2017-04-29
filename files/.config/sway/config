@@ -30,16 +30,16 @@ output * bg /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
+
+    input "2:7:SynPS/2_Synaptics_TouchPad" {
+        pointer_accel -1
+        dwt enabled
+        tap enabled
+        natural_scroll enabled
+        middle_emulation enabled
+        scroll_method edge
+    }
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # The escape symbol "\" has to be removed.
 # Read `man 5 sway-input` for more information about this section.
