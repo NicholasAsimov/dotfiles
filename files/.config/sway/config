@@ -199,6 +199,7 @@ bar {
 #
 # Miscellaneous:
 #
+font pango:Fira Mono 8
 focus_follows_mouse false
 
 include /etc/sway/config.d/*
