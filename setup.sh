@@ -19,9 +19,17 @@ done
 # Symlink each file in 'files' directory to corresponding location in $HOME
 cd files
 
-for f in `find . -type f`; do
-    filepath=$(realpath $f)
-    ln $params $filepath $HOME/$f
+# $filepath is a path to the file relative to the 'files' folder
+# e.g. ./.zshrc
+for filepath in `find . -type f`; do
+	# $source is an absolute path to the source file
+	# e.g. /home/user/.dotfiles/files/.zshrc
+    source=$(realpath $filepath)
+    destination="$HOME/$filepath"
+
+	# Make sure destination folder exists
+	mkdir -p $(dirname $destination)
+    ln $params $source $destination
 done
 
 cd ..
