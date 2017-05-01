@@ -30,9 +30,11 @@ output * bg ~/pictures/wallpapers/cube.jpg fill
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Input configuration
+    input * {
+        pointer_accel -1
+    }
 
     input "2:7:SynPS/2_Synaptics_TouchPad" {
-        pointer_accel -1
         dwt enabled
         tap enabled
         natural_scroll enabled
