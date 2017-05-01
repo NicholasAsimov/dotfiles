@@ -20,6 +20,9 @@ alias gd="git diff"
 alias gs="git status"
 eval "$(thefuck --alias)"
 
+# Environment variables
+export TERM=xterm-256color
+
 # Go
 export GOPATH="$HOME/code/go"
 export PATH="$PATH:$GOPATH/bin"
