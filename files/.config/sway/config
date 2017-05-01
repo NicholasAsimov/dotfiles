@@ -59,6 +59,9 @@ output * bg ~/pictures/wallpapers/cube.jpg fill
     # start your launcher
     bindsym $mod+d exec $menu
 
+    # lock screen
+    bindsym $mod+period exec swaylock --image ~/pictures/wallpapers/owl.png --scaling fill
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -203,5 +206,6 @@ bar {
 #
 font pango:Fira Mono 8
 focus_follows_mouse false
+#new_window pixel
 
 include /etc/sway/config.d/*
