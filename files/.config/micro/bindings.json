@@ -1,3 +1,5 @@
 {
-    "CtrlR": "init.gorun"
+    "CtrlR": "init.gorun",
+    "CtrlY": "DeleteLine",
+    "CtrlK": "UnbindKey",
 }
