@@ -6,8 +6,19 @@ HISTSIZE=9999
 SAVEHIST=999999
 
 #------------------------------
+# Environment variables
+#------------------------------
+export TERM=xterm-256color
+export EDITOR=nvim
+export VISUAL=nvim
+export GOPATH="$HOME/code/go"
+export PATH="$PATH:$GOPATH/bin"
+
+#------------------------------
 # Aliases
 #------------------------------
+alias e="$EDITOR"
+
 alias ga="git add"
 alias gc="git commit"
 alias gd="git diff"
@@ -17,14 +28,6 @@ alias ls="ls --color -F"
 alias ll="ls --color -lh"
 
 eval "$(thefuck --alias)"
-
-#------------------------------
-# Environment variables
-#------------------------------
-export TERM=xterm-256color
-export EDITOR=micro
-export GOPATH="$HOME/code/go"
-export PATH="$PATH:$GOPATH/bin"
 
 #------------------------------
 # Keybindings
