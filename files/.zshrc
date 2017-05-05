@@ -37,14 +37,16 @@ eval "$(thefuck --alias)"
 # Select 'vim' keymap  (see also zshzle(1) man page)
 bindkey -v
 
+# <jj> to exit Insert mode
+bindkey -M viins "jj" vi-cmd-mode
+
 # Make 'home' and 'end' buttons work as expected
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
 
-# TODO change these to j and k after we get used to vim shortcuts
 # Search through history (see 'Completion' section)
-bindkey "\e[A" up-line-or-beginning-search # Up arrow
-bindkey "\e[B" down-line-or-beginning-search # Down arrow
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
 
 #------------------------------
 # Prompt
