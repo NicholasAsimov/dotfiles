@@ -27,6 +27,8 @@ alias gs="git status"
 alias ls="ls --color -F"
 alias ll="ls --color -lh"
 
+alias vi="nvim"
+alias vim="nvim"
 eval "$(thefuck --alias)"
 
 #------------------------------
