@@ -52,6 +52,7 @@ autocmd InsertLeave * :set relativenumber
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " Specify custom go fmt function for vim-go plugin
 let g:go_fmt_command = "goimports"
