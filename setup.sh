@@ -22,13 +22,13 @@ cd files
 # $filepath is a path to the file relative to the 'files' folder
 # e.g. ./.zshrc
 for filepath in `find . -type f`; do
-	# $source is an absolute path to the source file
-	# e.g. /home/user/.dotfiles/files/.zshrc
+    # $source is an absolute path to the source file
+    # e.g. /home/user/.dotfiles/files/.zshrc
     source=$(realpath $filepath)
     destination="$HOME/$filepath"
 
-	# Make sure destination folder exists
-	mkdir -p $(dirname $destination)
+    # Make sure destination folder exists
+    mkdir -p $(dirname $destination)
     ln $params $source $destination
 done
 
