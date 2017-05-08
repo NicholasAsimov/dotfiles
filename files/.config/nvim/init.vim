@@ -33,6 +33,10 @@ nnoremap ; :
 " Exit insert mode by pressing <jj>
 inoremap jj <Esc>
 
+" Open new split panes to right and bottom, which feels more natural than Vim’s default
+set splitbelow
+set splitright
+
 " Use relative number line by default and automatically change to absolute
 " number line if in insert mode or if vi loses focus.
 " TODO maybe switch to github.com/jeffkreeftmeijer/vim-numbertoggle plugin
