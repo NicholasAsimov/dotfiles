@@ -87,7 +87,7 @@ if dein#load_state('/home/rockstar/.cache/dein')
   call dein#add('/home/rockstar/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
-  call dein#add('fatih/vim-go')
+  call dein#add('fatih/vim-go', { 'hook_post_update': ':GoInstallBinaries' })
   call dein#add('junegunn/fzf', { 'build': './install --bin', 'merged': 0 })
   call dein#add('junegunn/fzf.vim')
   " You can specify revision/branch/tag.
