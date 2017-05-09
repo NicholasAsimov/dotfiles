@@ -43,14 +43,13 @@ set splitright
 set number
 set relativenumber
 
-" TODO focuslost doesn't wors
 autocmd FocusLost * set norelativenumber
 autocmd FocusGained * set relativenumber
 autocmd WinLeave * set norelativenumber
-autocmd WinEnter * :set relativenumber
+autocmd WinEnter * set relativenumber
 
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
+autocmd InsertEnter * set norelativenumber
+autocmd InsertLeave * set relativenumber
 
 " Bindings to build and run programs
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
