@@ -48,8 +48,12 @@ bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
 
 # Search through history (see 'Completion' section)
+# using <j> and <k> in Normal mode or <^P> and <^N> in Insert mode
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
+
+bindkey -M viins "^P" up-line-or-beginning-search
+bindkey -M viins "^N" down-line-or-beginning-search
 
 #------------------------------
 # Prompt
