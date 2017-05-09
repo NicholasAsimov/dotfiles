@@ -29,6 +29,9 @@ alias ll="ls --color -lh"
 
 alias vi="nvim"
 alias vim="nvim"
+
+alias vimconf="vi ~/.config/nvim/init.vim"
+
 eval "$(thefuck --alias)"
 
 #------------------------------
