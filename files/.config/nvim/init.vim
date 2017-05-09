@@ -58,6 +58,13 @@ autocmd FileType go nmap <leader>r  :w<CR> <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
+" Bindings for fzf
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-g>g :Ag<CR>
+nnoremap <C-g>c :Commands<CR>
+nnoremap <C-f>l :BLines<CR>
+nnoremap <C-p> :Files<CR>
+
 " Specify custom go fmt function for vim-go plugin
 let g:go_fmt_command = "goimports"
 
@@ -82,6 +89,8 @@ if dein#load_state('/home/rockstar/.cache/dein')
 
   " Add or remove your plugins here:
   call dein#add('fatih/vim-go')
+  call dein#add('junegunn/fzf', { 'build': './install --bin', 'merged': 0 })
+  call dein#add('junegunn/fzf.vim')
   " You can specify revision/branch/tag.
   " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
