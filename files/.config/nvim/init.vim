@@ -33,6 +33,9 @@ nnoremap ; :
 " Exit insert mode by pressing <jj>
 inoremap jj <Esc>
 
+" Allow to de-tab using Shift-Tab
+inoremap <s-tab> <C-d>
+
 " Open new split panes to right and bottom, which feels more natural than Vim’s default
 set splitbelow
 set splitright
