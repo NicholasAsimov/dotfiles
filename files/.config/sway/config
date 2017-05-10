@@ -193,6 +193,22 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
+# Colors
+#
+set $bg-color            #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+# window colors
+#                       border              background         text                 indicator   child_border
+client.focused          $bg-color           $bg-color          $text-color          #333333     $bg-color
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #333333     $inactive-bg-color
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #333333     $inactive-bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #333333     $urgent-bg-color
+
+#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
@@ -200,9 +216,13 @@ bar {
     status_command i3blocks
     position top
     colors {
+        background $bg-color
         statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        separator #757575
+        #                  border             background         text
+        focused_workspace  $bg-color          $bg-color          $text-color
+        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
     }
 }
 
