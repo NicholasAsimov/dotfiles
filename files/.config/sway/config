@@ -214,7 +214,7 @@ for_window [class="Chromium"] border none
 #
 # Miscellaneous:
 #
-font pango:Fira Mono 8
+font pango:Roboto 8
 focus_follows_mouse false
 #new_window pixel
 
