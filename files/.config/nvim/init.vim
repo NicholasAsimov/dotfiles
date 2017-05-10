@@ -73,6 +73,11 @@ let g:go_fmt_command = "goimports"
 " Autosave file when running make
 set autowrite
 
+" Set ultisnips triggers
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 " Set colorscheme
 colorscheme Tomorrow-Night-Eighties
 
@@ -91,6 +96,7 @@ if dein#load_state('/home/rockstar/.cache/dein')
 
   " Add or remove your plugins here:
   call dein#add('fatih/vim-go', { 'hook_post_update': ':GoInstallBinaries' })
+  call dein#add('SirVer/ultisnips')
   call dein#add('junegunn/fzf', { 'build': './install --bin', 'merged': 0 })
   call dein#add('junegunn/fzf.vim')
   call dein#add('tpope/vim-commentary')
