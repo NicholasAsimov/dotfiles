@@ -6,6 +6,8 @@
     "colorscheme": "zenburn",
     "cursorline": true,
     "eofnewline": false,
+    "gofmt": false,
+    "goimports": true,
     "ignorecase": false,
     "indentchar": " ",
     "infobar": true,
