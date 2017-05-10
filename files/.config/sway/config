@@ -207,6 +207,11 @@ bar {
 }
 
 #
+# Window-specific options
+#
+for_window [class="Chromium"] border none
+
+#
 # Miscellaneous:
 #
 font pango:Fira Mono 8
