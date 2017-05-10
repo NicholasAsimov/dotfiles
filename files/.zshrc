@@ -121,5 +121,9 @@ setopt sharehistory
 # Ignore duplicates of previous command
 setopt histignoredups
 
+# Activate fzf keybindings (^R to search history, ^T to find files, M+C to cd)
+source /usr/share/fzf/key-bindings.zsh
+
 # Activate fish-like syntax highlighting (has to be the last line)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
