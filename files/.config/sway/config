@@ -216,6 +216,6 @@ for_window [class="Chromium"] border none
 #
 font pango:Roboto 8
 focus_follows_mouse false
-#new_window pixel
+new_window normal 2
 
 include /etc/sway/config.d/*
