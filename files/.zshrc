@@ -32,8 +32,6 @@ alias vim="nvim"
 
 alias vimconf="vi ~/.config/nvim/init.vim"
 
-eval "$(thefuck --alias)"
-
 #------------------------------
 # Keybindings
 #------------------------------
@@ -82,6 +80,7 @@ RPROMPT='${vim_mode}'
 
 # Do not display modes for previously accepted lines
 setopt transient_rprompt
+
 #------------------------------
 # Completion
 #------------------------------
