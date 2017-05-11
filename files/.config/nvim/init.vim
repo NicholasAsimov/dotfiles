@@ -61,7 +61,7 @@ autocmd InsertLeave * set relativenumber
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  :w<CR> <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
 
 " Bindings for fzf
 nnoremap <C-g>b :Buffers<CR>
