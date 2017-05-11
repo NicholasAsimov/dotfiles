@@ -11,5 +11,7 @@ function install_yaourt() {
     cd ..
 }
 
+cd /tmp
+
 echo "Installing yaourt"
 install_yaourt
