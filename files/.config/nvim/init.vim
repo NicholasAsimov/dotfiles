@@ -100,6 +100,7 @@ if dein#load_state('/home/rockstar/.cache/dein')
   call dein#add('junegunn/fzf', { 'build': './install --bin', 'merged': 0 })
   call dein#add('junegunn/fzf.vim')
   call dein#add('tpope/vim-commentary')
+  call dein#add('tpope/vim-surround')
   " You can specify revision/branch/tag.
   " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
