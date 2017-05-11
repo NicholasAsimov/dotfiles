@@ -86,16 +86,19 @@ colorscheme Tomorrow-Night-Eighties
 
 " Install plugins
 "dein Scripts-----------------------------
-" Required:
-set runtimepath+=/home/rockstar/.cache/dein/repos/github.com/Shougo/dein.vim
+
+let s:dein_dir = expand('~/.cache/dein')
 
 " Required:
-if dein#load_state('/home/rockstar/.cache/dein')
-  call dein#begin('/home/rockstar/.cache/dein')
+execute 'set runtimepath+=' . s:dein_dir.'/repos/github.com/Shougo/dein.vim'
+
+" Required:
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
   " Let dein manage dein
   " Required:
-  call dein#add('/home/rockstar/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/dein.vim')
 
   " Add or remove your plugins here:
   call dein#add('fatih/vim-go', { 'hook_post_update': ':GoInstallBinaries' })
