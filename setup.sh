@@ -32,6 +32,25 @@ for filepath in `find . -type f`; do
     ln $params $source $destination
 done
 
-cd ..
+cd /tmp
 
-# Download zsh-pure-prompt
+# Install zsh-pure-prompt
+PURE_VERSION="1.5.2"
+promptPath="/usr/share/zsh/site-functions/prompt_pure_setup"
+asyncPath="/usr/share/zsh/site-functions/async"
+if [ ! -f $promptPath ] || [ ! -f $asyncPath ]; then
+    echo "pure-zsh is not installed, installing.."
+    curl -L -o "pure.tar.gz" "https://github.com/sindresorhus/pure/archive/v${PURE_VERSION}.tar.gz"
+    tar -xzf "pure.tar.gz"
+    cd "pure-${PURE_VERSION}"
+    sudo cp pure.zsh $promptPath
+    sudo cp async.zsh $asyncPath
+    cd ..
+fi
+
+# Install dein.vim
+if [ ! -d "$HOME/.cache/dein" ]; then
+    echo "dein.vim is not installed, installing.."
+    curl -o installer.sh https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
+    sh ./installer.sh "$HOME/.cache/dein"
+fi
