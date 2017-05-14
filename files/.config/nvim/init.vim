@@ -39,6 +39,9 @@ inoremap jj <Esc>
 " Allow to de-tab using Shift-Tab
 inoremap <s-tab> <C-d>
 
+" Disable scratch window when auto-completing
+set completeopt-=preview
+
 " Open new split panes to right and bottom, which feels more natural than Vim’s default
 set splitbelow
 set splitright
