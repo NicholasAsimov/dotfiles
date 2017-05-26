@@ -81,9 +81,6 @@ nnoremap <C-g>c :Commands<CR>
 nnoremap <C-g>l :BLines<CR>
 nnoremap <C-p> :Files<CR>
 
-" Specify custom go fmt function for vim-go plugin
-let g:go_fmt_command = "goimports"
-
 " Autosave file when running make
 set autowrite
 
@@ -140,3 +137,22 @@ syntax enable
 
 "End dein Scripts-------------------------
 
+" Plugin settings
+
+" vim-go
+" Automatically show identifier information
+let g:go_auto_type_info = 1
+
+" Specify custom go fmt function
+let g:go_fmt_command = "goimports"
+
+" deoplete.nvim
+set completeopt+=noselect
+" Run deoplete.nvim automatically
+let g:deoplete#enable_at_startup = 1
+
+" deoplete-go
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#use_cache = 1
+let g:deoplete#sources#go#json_directory = '~/.cache/deoplete/go/$GOOS_$GOARCH'
