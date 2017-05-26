@@ -78,7 +78,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 nnoremap <C-g>b :Buffers<CR>
 nnoremap <C-g>g :Ag<CR>
 nnoremap <C-g>c :Commands<CR>
-nnoremap <C-f>l :BLines<CR>
+nnoremap <C-g>l :BLines<CR>
 nnoremap <C-p> :Files<CR>
 
 " Specify custom go fmt function for vim-go plugin
