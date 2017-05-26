@@ -109,7 +109,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/dein.vim')
 
   " Add or remove your plugins here:
-  call dein#add('fatih/vim-go', { 'hook_post_update': ':GoInstallBinaries' })
+  call dein#add('fatih/vim-go', { 'hook_post_update': ':GoInstallBinaries', 'on_ft': 'go' })
   call dein#add('SirVer/ultisnips')
   call dein#add('junegunn/fzf', { 'build': './install --bin', 'merged': 0 })
   call dein#add('junegunn/fzf.vim')
@@ -117,7 +117,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('tpope/vim-surround')
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('zchee/deoplete-go', {'build': 'make'})
+  call dein#add('zchee/deoplete-go', { 'build': 'make', 'on_ft': 'go' })
   " You can specify revision/branch/tag.
   " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
