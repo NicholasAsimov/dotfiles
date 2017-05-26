@@ -118,6 +118,9 @@ if dein#load_state(s:dein_dir)
   call dein#add('junegunn/fzf.vim')
   call dein#add('tpope/vim-commentary')
   call dein#add('tpope/vim-surround')
+  " Async autocomplete
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('zchee/deoplete-go', {'build': 'make'})
   " You can specify revision/branch/tag.
   " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
