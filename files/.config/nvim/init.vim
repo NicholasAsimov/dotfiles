@@ -63,11 +63,16 @@ autocmd WinEnter * set relativenumber
 autocmd InsertEnter * set norelativenumber
 autocmd InsertLeave * set relativenumber
 
-" Bindings to build and run programs
+" Language-specific options
+
+" Go
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  :w<CR> <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
+
+" YAML
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Bindings for fzf
 nnoremap <C-g>b :Buffers<CR>
