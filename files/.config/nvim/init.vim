@@ -49,6 +49,10 @@ set completeopt-=preview
 set splitbelow
 set splitright
 
+" Case-insensitive search
+set ignorecase
+set smartcase
+
 " Use relative number line by default and automatically change to absolute
 " number line if in insert mode or if vi loses focus.
 " TODO maybe switch to github.com/jeffkreeftmeijer/vim-numbertoggle plugin
