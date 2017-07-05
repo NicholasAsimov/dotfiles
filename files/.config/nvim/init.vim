@@ -119,6 +119,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('junegunn/fzf.vim')
   call dein#add('tpope/vim-commentary')
   call dein#add('tpope/vim-surround')
+  call dein#add('neomake/neomake')
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('zchee/deoplete-go', { 'build': 'make', 'on_ft': 'go' })
@@ -160,3 +161,8 @@ let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#use_cache = 1
 let g:deoplete#sources#go#json_directory = '~/.cache/deoplete/go/$GOOS_$GOARCH'
+
+" neomake
+autocmd! BufWritePost * Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_go_enabled_makers = ['gometalinter']
