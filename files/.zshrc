@@ -12,7 +12,8 @@ export TERM=xterm-256color
 export EDITOR=nvim
 export VISUAL=nvim
 export GOPATH="$HOME/code/go"
-export PATH="$PATH:$GOPATH/bin"
+export NPM_CONFIG_PREFIX="$HOME/.npm-global"
+export PATH="$PATH:$GOPATH/bin:$NPM_CONFIG_PREFIX/bin"
 
 #------------------------------
 # Aliases
