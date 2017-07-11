@@ -1,0 +1,5 @@
+.git/
+.kube/
+/node_modules
+/vendor
+*.min.js
