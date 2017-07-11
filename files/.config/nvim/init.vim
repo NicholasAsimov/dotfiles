@@ -40,7 +40,7 @@ inoremap jj <Esc>
 inoremap <s-tab> <C-d>
 
 " Save with sudo when file is read-only
-cmap w!! w !sudo tee % > /dev/null
+"cmap w!! w !sudo tee % > /dev/null
 
 " Disable scratch window when auto-completing
 set completeopt-=preview
