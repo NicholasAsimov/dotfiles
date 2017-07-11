@@ -73,6 +73,7 @@ autocmd InsertLeave * set relativenumber
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  :w<CR> <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <Leader>i  <Plug>(go-info)
 autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
 
 " YAML
@@ -145,8 +146,9 @@ syntax enable
 " Plugin settings
 
 " vim-go
-" Automatically show identifier information
-let g:go_auto_type_info = 1
+" Do not automatically show identifier information
+" because it conflicts with linting messages
+let g:go_auto_type_info = 0
 
 " Specify custom go fmt function
 let g:go_fmt_command = "goimports"
