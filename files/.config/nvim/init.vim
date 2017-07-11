@@ -23,7 +23,7 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
 " Disable <Esc> key in Insert mode to force using <jj> instead
-inoremap <Esc> <Nop>
+" inoremap <Esc> <Nop>
 
 " <Enter> in normal mode will disable highlighting of current search.
 " Note: it will not clear the search, so using <n> will jump to the next
