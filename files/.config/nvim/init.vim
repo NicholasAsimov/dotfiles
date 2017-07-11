@@ -164,5 +164,6 @@ let g:deoplete#sources#go#json_directory = '~/.cache/deoplete/go/$GOOS_$GOARCH'
 
 " neomake
 autocmd! BufWritePost * Neomake
+let g:neomake_javascript_eslint_exe = $PWD.'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_go_enabled_makers = ['gometalinter']
