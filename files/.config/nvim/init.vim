@@ -121,6 +121,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('tpope/vim-commentary')
   call dein#add('tpope/vim-surround')
   call dein#add('neomake/neomake')
+  call dein#add('jiangmiao/auto-pairs')
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('zchee/deoplete-go', { 'build': 'make', 'on_ft': 'go' })
