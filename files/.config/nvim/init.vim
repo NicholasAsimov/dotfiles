@@ -170,3 +170,4 @@ autocmd! BufWritePost * Neomake
 let g:neomake_javascript_eslint_exe = $PWD.'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_go_enabled_makers = ['gometalinter']
+let g:neomake_go_gometalinter_args = ['--disable-all', '--enable=X', '--enable=errcheck']
