@@ -16,7 +16,7 @@ export NPM_CONFIG_PREFIX="$HOME/.npm-global"
 export PATH="$PATH:$GOPATH/bin:$NPM_CONFIG_PREFIX/bin"
 
 # fzf settings
-export FZF_DEFAULT_COMMAND='ag --path-to-ignore $HOME/.ignore --hidden -l -g ""'
+export FZF_DEFAULT_COMMAND="ag --path-to-ignore $HOME/.ignore --hidden -l -g ''"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 #------------------------------
