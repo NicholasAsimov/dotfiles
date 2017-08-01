@@ -1,3 +1,12 @@
+" Persistent undo
+set undofile
+set undodir=$HOME/.config/nvim/undo
+
+set undolevels=1000
+set undoreload=10000
+
+:silent call system('mkdir -p ' . &undodir)
+
 " Show existing tab with 4 spaces width
 set tabstop=4
 
