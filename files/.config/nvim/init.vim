@@ -134,8 +134,9 @@ if dein#load_state(s:dein_dir)
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('zchee/deoplete-go', { 'build': 'make', 'on_ft': 'go' })
-  " You can specify revision/branch/tag.
-  " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+  " Syntax
+  call dein#add('cespare/vim-toml')
 
   " Required:
   call dein#end()
