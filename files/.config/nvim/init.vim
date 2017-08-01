@@ -131,6 +131,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('tpope/vim-surround')
   call dein#add('neomake/neomake')
   call dein#add('jiangmiao/auto-pairs')
+
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('zchee/deoplete-go', { 'build': 'make', 'on_ft': 'go' })
@@ -179,5 +180,6 @@ let g:deoplete#sources#go#json_directory = $HOME.'/.cache/deoplete/go/linux_amd6
 autocmd! BufWritePost * Neomake
 let g:neomake_javascript_eslint_exe = $PWD.'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
+
 let g:neomake_go_enabled_makers = ['gometalinter']
-let g:neomake_go_gometalinter_args = ['--disable-all', '--enable=X', '--enable=errcheck']
+let g:neomake_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
