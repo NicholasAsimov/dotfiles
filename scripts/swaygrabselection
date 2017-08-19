@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+
+filepath=$1
+clipboardMode=false
+
+if [ -z "$filepath" ]; then
+    echo "Usage: $(basename "$0") filepath"
+    echo "If you specify \"clipboard\" as the file path the image will be copied to primary clipboard."
+    exit 1
+fi
+
+if [[ "$filepath" == "clipboard" ]]; then
+    clipboardMode=true
+    filepath="/tmp/tmpshot.png"
+fi
+
+swaygrab $filepath
+convert $filepath -crop "$(slop)" $filepath
+
+if [[ $clipboardMode == true ]]; then
+    xclip -selection clipboard -t image/png -i $filepath
+    rm -f $filepath
+fi
+

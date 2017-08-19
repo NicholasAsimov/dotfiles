@@ -62,6 +62,9 @@ output * bg ~/pictures/wallpapers/cube.jpg fill
     # lock screen
     bindsym $mod+period exec swaylock --image ~/pictures/wallpapers/owl.png --scaling fill
 
+    # screenshot selected container to clipboard
+    bindsym Print exec swaygrabselection clipboard
+
     # volume control
     bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ && pkill -RTMIN+10 i3blocks
     bindsym XF86AudioLowerVolume exec amixer set Master 5%- && pkill -RTMIN+10 i3blocks
