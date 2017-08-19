@@ -32,6 +32,16 @@ for filepath in `find . -type f`; do
     ln $params $source $destination
 done
 
+# Symlink each file in 'scripts' directory to /usr/local/bin
+cd ../scripts
+
+for filepath in `find . -type f`; do
+    source=$(realpath $filepath)
+    destination="/usr/local/bin/$filepath"
+
+    sudo ln $params $source $destination
+done
+
 cd /tmp
 
 # Install zsh-pure-prompt
