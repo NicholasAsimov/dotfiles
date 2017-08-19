@@ -94,8 +94,9 @@ interval=10
 min_width=CPU: 100.00%
 #separator=false
 
-#[load_average]
-#interval=10
+[load_average]
+label=AVG
+interval=10
 
 # Battery indicator
 #
