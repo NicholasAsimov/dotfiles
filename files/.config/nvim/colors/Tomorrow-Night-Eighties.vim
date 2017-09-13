@@ -353,6 +353,25 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("javascriptGlobal", s:blue, "", "")
 	call <SID>X("javascriptStatement", s:red, "", "")
 
+	call <SID>X("jsArrowFunction", s:foreground, "", "")
+	call <SID>X("jsFuncName", s:foreground, "", "")
+	call <SID>X("jsClassFuncName", s:foreground, "", "")
+	call <SID>X("jsClassDefinition", s:foreground, "", "")
+	call <SID>X("jsOperator", s:foreground, "", "")
+	call <SID>X("jsSpreadOperator", s:foreground, "", "")
+
+	call <SID>X("jsFunction", s:purple, "", "")
+	call <SID>X("jsClassKeyword", s:purple, "", "")
+	call <SID>X("jsExtendsKeyword", s:purple, "", "")
+	call <SID>X("jsStorageClass", s:purple, "", "")
+	call <SID>X("jsConditional", s:purple, "", "")
+	call <SID>X("jsImport", s:purple, "", "")
+	call <SID>X("jsFrom", s:purple, "", "")
+	call <SID>X("jsExport", s:purple, "", "")
+	call <SID>X("jsModuleAs", s:purple, "", "")
+
+	call <SID>X("jsExportDefault", s:orange, "", "")
+
 	" CoffeeScript Highlighting
 	call <SID>X("coffeeRepeat", s:purple, "", "")
 	call <SID>X("coffeeConditional", s:purple, "", "")
@@ -364,6 +383,13 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("htmlTagName", s:red, "", "")
 	call <SID>X("htmlArg", s:red, "", "")
 	call <SID>X("htmlScriptTag", s:red, "", "")
+
+    " XML Highlighting
+	call <SID>X("Tag", s:foreground, "", "")
+	call <SID>X("xmlTag", s:foreground, "", "")
+	call <SID>X("xmlTagName", s:foreground, "", "")
+	call <SID>X("xmlEndTag", s:foreground, "", "")
+	call <SID>X("xmlAttrib", s:foreground, "", "")
 
 	" Diff Highlighting
 	call <SID>X("diffAdd", "", "4c4e39", "")

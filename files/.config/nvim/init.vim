@@ -131,6 +131,8 @@ if dein#load_state(s:dein_dir)
   call dein#add('tpope/vim-surround')
   call dein#add('neomake/neomake')
   call dein#add('jiangmiao/auto-pairs')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('mxw/vim-jsx')
 
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
@@ -183,3 +185,6 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 
 let g:neomake_go_enabled_makers = ['gometalinter']
 let g:neomake_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+
+" vim-jsx
+let g:jsx_ext_required = 0
