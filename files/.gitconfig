@@ -1,3 +1,6 @@
 [user]
 	email = nicholas@asimov.me
 	name = Nicholas Asimov
+[gui]
+	fontui = -family Roboto -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Fira Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
