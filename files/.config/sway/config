@@ -255,6 +255,11 @@ bar {
 for_window [class="Chromium"] border none
 
 #
+# Autostart
+#
+exec redshift -m wayland >/dev/null 2>&1 &
+
+#
 # Miscellaneous:
 #
 font pango:Roboto 8
