@@ -369,8 +369,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("jsFrom", s:purple, "", "")
 	call <SID>X("jsExport", s:purple, "", "")
 	call <SID>X("jsModuleAs", s:purple, "", "")
+	call <SID>X("jsReturn", s:purple, "", "")
+	call <SID>X("jsThis", s:purple, "", "")
 
 	call <SID>X("jsExportDefault", s:orange, "", "")
+	call <SID>X("jsCommentTodo", s:yellow, "", "")
 
 	" CoffeeScript Highlighting
 	call <SID>X("coffeeRepeat", s:purple, "", "")
