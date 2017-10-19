@@ -112,7 +112,7 @@ colorscheme Tomorrow-Night-Eighties
 let s:dein_dir = expand('~/.cache/dein')
 
 " Required:
-execute 'set runtimepath+=' . s:dein_dir.'/repos/github.com/Shougo/dein.vim'
+execute 'set runtimepath+='.s:dein_dir.'/repos/github.com/Shougo/dein.vim'
 
 " Required:
 if dein#load_state(s:dein_dir)
