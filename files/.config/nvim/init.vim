@@ -159,7 +159,10 @@ syntax enable
 
 " Plugin settings
 
+" =================================
 " vim-go
+" =================================
+
 " Do not automatically show identifier information
 " because it conflicts with linting messages
 let g:go_auto_type_info = 0
@@ -167,24 +170,41 @@ let g:go_auto_type_info = 0
 " Specify custom go fmt function
 let g:go_fmt_command = "goimports"
 
+" =================================
 " deoplete.nvim
+" =================================
+
 set completeopt+=noselect
+
 " Run deoplete.nvim automatically
 let g:deoplete#enable_at_startup = 1
 
+" =================================
 " deoplete-go
+" =================================
+
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#use_cache = 1
 let g:deoplete#sources#go#json_directory = $HOME.'/.cache/deoplete/go/linux_amd64'
 
+" =================================
 " neomake
+" =================================
+
+" Run neomake on buffer save
 autocmd! BufWritePost * Neomake
+
+" javascript eslint
 let g:neomake_javascript_eslint_exe = $PWD.'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
 
+" go
 let g:neomake_go_enabled_makers = ['gometalinter']
 let g:neomake_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
 
+" =================================
 " vim-jsx
+" =================================
+
 let g:jsx_ext_required = 0
