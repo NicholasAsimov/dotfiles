@@ -208,3 +208,13 @@ let g:neomake_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
 " =================================
 
 let g:jsx_ext_required = 0
+
+" =================================
+" fzf
+" =================================
+
+" Redefine :Ag command to use ignore file
+autocmd VimEnter * command! -nargs=* Ag call fzf#vim#ag
+            \ (<q-args>,
+            \ '--path-to-ignore '.expand('~/.ignore'),
+            \ fzf#vim#default_layout)
