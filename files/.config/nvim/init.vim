@@ -1,3 +1,11 @@
+" Disable cursor styling, as it causes problems in lilyterm
+set guicursor=
+
+" Automatically enter insert mode in terminal buffer and hide number line
+" This was default behavior until neovim 0.2.1
+autocmd TermOpen * setlocal nonumber
+autocmd TermOpen * startinsert
+
 " Persistent undo
 set undofile
 set undodir=$HOME/.config/nvim/undo
