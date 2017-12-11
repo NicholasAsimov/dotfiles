@@ -45,7 +45,7 @@ done
 cd /tmp
 
 # Install zsh-pure-prompt
-PURE_VERSION="1.5.2"
+PURE_VERSION="1.6.0"
 promptPath="/usr/share/zsh/site-functions/prompt_pure_setup"
 asyncPath="/usr/share/zsh/site-functions/async"
 if [ ! -f $promptPath ] || [ ! -f $asyncPath ]; then
