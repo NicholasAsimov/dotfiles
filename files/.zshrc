@@ -11,6 +11,10 @@ SAVEHIST=999999
 export TERM=xterm-256color
 export EDITOR=nvim
 export VISUAL=nvim
+
+# Allow `less` to interpret ANSI escape sequences
+export LESS=R
+
 export GOPATH="$HOME/code/go"
 export NPM_CONFIG_PREFIX="$HOME/.npm-global"
 export PATH="$PATH:$GOPATH/bin:$NPM_CONFIG_PREFIX/bin"
