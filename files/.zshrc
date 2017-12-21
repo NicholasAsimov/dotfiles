@@ -12,8 +12,11 @@ export TERM=xterm-256color
 export EDITOR=nvim
 export VISUAL=nvim
 
-# Allow `less` to interpret ANSI escape sequences
-export LESS=R
+# `less` configuration
+# R - interpret ANSI escape sequences
+# F - automatically quit if one screen
+# X - disable sending the termcap strings
+export LESS=RFX
 
 export GOPATH="$HOME/code/go"
 export NPM_CONFIG_PREFIX="$HOME/.npm-global"
