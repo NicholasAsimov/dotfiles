@@ -5,6 +5,7 @@
 	fontui = -family Roboto -size 9 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Fira Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
 	spellingdictionary = none
+	tabsize = 4
 [pull]
 	rebase = true
 [rebase]
