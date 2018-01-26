@@ -1,6 +1,9 @@
 [user]
 	email = nicholas@asimov.me
 	name = Nicholas Asimov
+[credential]
+    # Cache passwords in memory for 30 days
+	helper = cache --timeout=2592000
 [gui]
 	fontui = -family Roboto -size 9 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Fira Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
