@@ -201,7 +201,7 @@ let g:deoplete#sources#go#json_directory = $HOME.'/.cache/deoplete/go/linux_amd6
 " =================================
 
 " Run neomake on buffer save
-autocmd! BufWritePost * Neomake
+call neomake#configure#automake('w')
 
 " javascript eslint
 let g:neomake_javascript_eslint_exe = $PWD.'/node_modules/.bin/eslint'
