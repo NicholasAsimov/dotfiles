@@ -124,6 +124,10 @@ zle -N down-line-or-beginning-search
 autoload -Uz compinit
 compinit
 
+# Kubernetes client completion
+source <(kubectl completion zsh)
+source <(helm completion zsh)
+
 #------------------------------
 # Miscellaneous
 #------------------------------
