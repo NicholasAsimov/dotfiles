@@ -4,6 +4,8 @@
 [credential]
     # Cache passwords in memory for 30 days
 	helper = cache --timeout=2592000
+[push]
+	followTags = true
 [pull]
 	rebase = true
 [rebase]
