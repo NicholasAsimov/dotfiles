@@ -200,6 +200,8 @@ let g:deoplete#sources#go#json_directory = $HOME.'/.cache/deoplete/go/linux_amd6
 " neomake
 " =================================
 
+let g:neomake_highlight_columns = 0
+
 " Run neomake on buffer save
 call neomake#configure#automake('w')
 
