@@ -2,7 +2,7 @@
 	name = Nicholas Asimov
 	email = nicholas@asimov.me
 [credential]
-    # Cache passwords in memory for 30 days
+	# Cache passwords in memory for 30 days
 	helper = cache --timeout=2592000
 [push]
 	followTags = true
