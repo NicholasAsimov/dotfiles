@@ -35,6 +35,7 @@ alias ag="ag --path-to-ignore $HOME/.ignore"
 
 alias ga="git add"
 alias gc="git commit"
+alias gco="git checkout"
 alias gd="git diff"
 alias gs="git status"
 
