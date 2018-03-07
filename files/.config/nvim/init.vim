@@ -131,16 +131,13 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/dein.vim')
 
   " Add or remove your plugins here:
-  call dein#add('fatih/vim-go', { 'hook_post_update': ':GoInstallBinaries', 'on_ft': 'go' })
   call dein#add('SirVer/ultisnips')
   call dein#add('junegunn/fzf', { 'build': './install --bin', 'merged': 0 })
   call dein#add('junegunn/fzf.vim')
-  call dein#add('tpope/vim-commentary')
-  call dein#add('tpope/vim-surround')
   call dein#add('neomake/neomake')
   call dein#add('jiangmiao/auto-pairs')
-  call dein#add('pangloss/vim-javascript')
-  call dein#add('mxw/vim-jsx')
+  call dein#add('tpope/vim-commentary')
+  call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-unimpaired')
   call dein#add('tpope/vim-repeat')
 
@@ -148,7 +145,10 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('zchee/deoplete-go', { 'build': 'make', 'on_ft': 'go' })
 
-  " Syntax
+  " Language support
+  call dein#add('fatih/vim-go', { 'hook_post_update': ':GoInstallBinaries', 'on_ft': 'go' })
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('mxw/vim-jsx')
   call dein#add('cespare/vim-toml')
 
   " Required:
