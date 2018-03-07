@@ -141,6 +141,8 @@ if dein#load_state(s:dein_dir)
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('pangloss/vim-javascript')
   call dein#add('mxw/vim-jsx')
+  call dein#add('tpope/vim-unimpaired')
+  call dein#add('tpope/vim-repeat')
 
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
