@@ -150,6 +150,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('pangloss/vim-javascript')
   call dein#add('mxw/vim-jsx')
   call dein#add('cespare/vim-toml')
+  call dein#add('xuhdev/vim-latex-live-preview', { 'on_ft': 'tex' })
 
   " Required:
   call dein#end()
@@ -227,3 +228,8 @@ command! -bang -nargs=* Ag
     \ call fzf#vim#ag(<q-args>,
     \   '--path-to-ignore ~/.ignore',
     \   <bang>0)
+
+" =================================
+" vim-latex-live-preview
+" =================================
+let g:livepreview_previewer = 'mupdf'
