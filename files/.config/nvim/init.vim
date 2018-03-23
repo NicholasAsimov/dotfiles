@@ -88,7 +88,7 @@ autocmd InsertLeave * set relativenumber
 
 " Go
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  :w<CR> <Plug>(go-run)
+autocmd FileType go nmap <leader>r  :w<CR>:vsplit <bar> terminal go run %<CR>
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>i  <Plug>(go-info)
 autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
