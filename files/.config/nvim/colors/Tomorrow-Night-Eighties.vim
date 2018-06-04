@@ -23,6 +23,27 @@ syntax reset
 
 let g:colors_name = "Tomorrow-Night-Eighties"
 
+" Neovim terminal mode
+" TODO remove duplicating color codes, use default 16 colors palette from
+" alacritty config
+let g:terminal_color_0 = "#2d2d2d"
+let g:terminal_color_1 = "#f2777a"
+let g:terminal_color_2 = "#99cc99"
+let g:terminal_color_3 = "#ffcc66"
+let g:terminal_color_4 = "#6699cc"
+let g:terminal_color_5 = "#cc99cc"
+let g:terminal_color_6 = "#66cccc"
+let g:terminal_color_7 = "#cccccc"
+
+let g:terminal_color_8 = "#2d2d2d"
+let g:terminal_color_9 = "#f2777a"
+let g:terminal_color_10 = "#99cc99"
+let g:terminal_color_11 = "#ffcc66"
+let g:terminal_color_12 = "#6699cc"
+let g:terminal_color_13 = "#cc99cc"
+let g:terminal_color_14 = "#66cccc"
+let g:terminal_color_15 = "#cccccc"
+
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Returns an approximate grey index for the given grey level
 	fun <SID>grey_number(x)
