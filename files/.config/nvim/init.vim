@@ -1,4 +1,4 @@
-" Disable cursor styling, as it causes problems in lilyterm
+" Disable cursor styling
 set guicursor=
 
 " Automatically enter insert mode in terminal buffer and hide number line
