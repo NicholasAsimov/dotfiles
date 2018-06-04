@@ -1,3 +1,8 @@
+" Enable 24-bit color
+if has("termguicolors")
+	set termguicolors
+endif
+
 " Disable cursor styling
 set guicursor=
 
