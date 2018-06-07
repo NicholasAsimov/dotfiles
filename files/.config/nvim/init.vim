@@ -75,19 +75,9 @@ set splitright
 set ignorecase
 set smartcase
 
-" Use relative number line by default and automatically change to absolute
-" number line if in insert mode or if vi loses focus.
-" TODO maybe switch to github.com/jeffkreeftmeijer/vim-numbertoggle plugin
+" Use relative number line by default
 set number
 set relativenumber
-
-autocmd FocusLost * set norelativenumber
-autocmd FocusGained * set relativenumber
-autocmd WinLeave * set norelativenumber
-autocmd WinEnter * set relativenumber
-
-autocmd InsertEnter * set norelativenumber
-autocmd InsertLeave * set relativenumber
 
 " Language-specific options
 
@@ -145,6 +135,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-unimpaired')
   call dein#add('tpope/vim-repeat')
+  call dein#add('jeffkreeftmeijer/vim-numbertoggle')
 
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
