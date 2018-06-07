@@ -136,6 +136,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('tpope/vim-unimpaired')
   call dein#add('tpope/vim-repeat')
   call dein#add('jeffkreeftmeijer/vim-numbertoggle')
+  call dein#add('justinmk/vim-dirvish')
 
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
@@ -219,6 +220,7 @@ let g:jsx_ext_required = 0
 " =================================
 " fzf
 " =================================
+
 " Redefine :Ag command to use ignore file
 command! -bang -nargs=* Ag
     \ call fzf#vim#ag(<q-args>,
@@ -228,4 +230,20 @@ command! -bang -nargs=* Ag
 " =================================
 " vim-latex-live-preview
 " =================================
+
 let g:livepreview_previewer = 'mupdf'
+
+" =================================
+" dirvish
+" =================================
+
+" Sort: directories at the top, alphabetical, case-sensitive
+" Double sort reqired to make dot directories to be at the top
+let g:dirvish_mode = ':sort | sort ,^.*/,'
+
+" Disable netrw completely and override it's commands to dirvish
+let g:loaded_netrwPlugin = 1
+command! -nargs=? -complete=dir Explore Dirvish <args>
+command! -nargs=? -complete=dir Sexplore split | silent Dirvish <args>
+command! -nargs=? -complete=dir Vexplore vsplit | silent Dirvish <args>
+
