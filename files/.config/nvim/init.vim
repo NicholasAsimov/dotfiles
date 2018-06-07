@@ -247,3 +247,9 @@ command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore split | silent Dirvish <args>
 command! -nargs=? -complete=dir Vexplore vsplit | silent Dirvish <args>
 
+" Disable preview keybinds so they don't collide with fzf
+augroup dirvish_config
+    autocmd!
+    autocmd FileType dirvish silent! unmap <buffer> <C-p>
+    autocmd FileType dirvish silent! unmap <buffer> <C-n>
+augroup END
