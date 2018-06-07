@@ -8,7 +8,7 @@ set guicursor=
 
 " Automatically enter insert mode in terminal buffer and hide number line
 " This was default behavior until neovim 0.2.1
-autocmd TermOpen * setlocal nonumber
+autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd TermOpen * startinsert
 
 " Persistent undo
