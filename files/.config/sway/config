@@ -4,26 +4,35 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+#
 ### Variables
 #
+
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
+
 # Your preferred terminal emulator
 # TODO this temporary launches alacritty in xwayland mode
 # remove "env WAYLAND_DISPLAY=" when this [https://github.com/jwilm/alacritty/issues/1062] is resolved
 set $term env WAYLAND_DISPLAY= alacritty
+
 # Your preferred application launcher
 set $menu j4-dmenu-desktop
+
+# Wallpapers
+set $wallpaper_desktop ~/pictures/wallpapers/cube.jpg
+set $wallpaper_lockscreen ~/pictures/wallpapers/owl.png
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
-output * bg ~/pictures/wallpapers/cube.jpg fill
+output * bg $wallpaper_desktop fill
 #
 # Example configuration:
 #
@@ -55,7 +64,7 @@ output * bg ~/pictures/wallpapers/cube.jpg fill
     bindsym $mod+d exec $menu
 
     # lock screen
-    bindsym $mod+period exec swaylock --image ~/pictures/wallpapers/owl.png --scaling fill
+    bindsym $mod+period exec swaylock --image $wallpaper_lockscreen --scaling fill
 
     # screenshot selected container to clipboard
     bindsym Print exec swaygrabselection clipboard
