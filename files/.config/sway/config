@@ -265,6 +265,15 @@ bar {
 for_window [class="Chromium"] border none
 
 #
+# DPMS & auto-lock
+#
+exec swayidle \
+	timeout 300 'swaylock --image $wallpaper_lockscreen --scaling fill' \
+	timeout 600 'swaymsg "output * dpms off"' \
+		 resume 'swaymsg "output * dpms on"' \
+	before-sleep 'swaylock --image $wallpaper_lockscreen --scaling fill'
+
+#
 # Autostart
 #
 exec redshift -m wayland >/dev/null 2>&1 &
