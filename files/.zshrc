@@ -53,6 +53,9 @@ alias vimconf="vi ~/.config/nvim/init.vim"
 # Select 'vim' keymap  (see also zshzle(1) man page)
 bindkey -v
 
+# Allow backspace to delete chars after entering Insert mode
+bindkey "^?" backward-delete-char
+
 # <jj> to exit Insert mode
 bindkey -M viins "jj" vi-cmd-mode
 
