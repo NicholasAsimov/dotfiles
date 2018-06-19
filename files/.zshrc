@@ -71,6 +71,11 @@ bindkey -M vicmd "j" down-line-or-beginning-search
 bindkey -M viins "^P" up-line-or-beginning-search
 bindkey -M viins "^N" down-line-or-beginning-search
 
+# Edit current line in editor using <v> in Normal mode
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 #------------------------------
 # Prompt
 #------------------------------
