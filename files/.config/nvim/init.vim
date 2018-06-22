@@ -140,6 +140,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('tpope/vim-repeat')
   call dein#add('jeffkreeftmeijer/vim-numbertoggle')
   call dein#add('justinmk/vim-dirvish')
+  call dein#add('machakann/vim-highlightedyank')
 
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
