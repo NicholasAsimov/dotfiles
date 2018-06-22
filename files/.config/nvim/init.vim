@@ -75,6 +75,9 @@ set splitright
 set ignorecase
 set smartcase
 
+" Interactive substitution
+set inccommand=nosplit
+
 " Use relative number line by default
 set number
 set relativenumber
