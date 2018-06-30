@@ -61,6 +61,12 @@ inoremap jj <Esc>
 " Allow to de-tab using Shift-Tab
 inoremap <s-tab> <C-d>
 
+" Faster split navigation using Alt+hjkl instead of Ctrl-W,hjkl
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
 " Save with sudo when file is read-only
 "cmap w!! w !sudo tee % > /dev/null
 
