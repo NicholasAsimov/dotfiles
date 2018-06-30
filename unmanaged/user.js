@@ -1,3 +1,5 @@
+// firefox user preferences
+
 // Disable alt-key opening menu bar (interferes with media keybinds e.g. Alt+3)
 user_pref("ui.key.menuAccessKeyFocuses", false);
 
