@@ -3,7 +3,6 @@
 set -e
 
 filepath=$1
-clipboardMode=false
 
 if [ -z "$filepath" ]; then
     echo "Usage: $(basename "$0") filepath"
@@ -12,15 +11,9 @@ if [ -z "$filepath" ]; then
 fi
 
 if [[ "$filepath" == "clipboard" ]]; then
-    clipboardMode=true
-    filepath="/tmp/tmpshot.png"
+    slurp | grim -g - - | xclip -selection clipboard -t image/png -i
+    exit 0
 fi
 
-swaygrab $filepath
-convert $filepath -crop "$(slop)" $filepath
-
-if [[ $clipboardMode == true ]]; then
-    xclip -selection clipboard -t image/png -i $filepath
-    rm -f $filepath
-fi
+slurp | grim -g - $filepath
 
