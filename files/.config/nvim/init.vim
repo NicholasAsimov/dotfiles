@@ -148,6 +148,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('jeffkreeftmeijer/vim-numbertoggle')
   call dein#add('justinmk/vim-dirvish')
   call dein#add('machakann/vim-highlightedyank')
+  call dein#add('lambdalisue/suda.vim')
 
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
@@ -264,3 +265,14 @@ augroup dirvish_config
     autocmd FileType dirvish silent! unmap <buffer> <C-p>
     autocmd FileType dirvish silent! unmap <buffer> <C-n>
 augroup END
+
+" =================================
+" suda.vim
+" =================================
+
+" Use sudo:// prefix instead of suda://
+let g:suda#prefix = 'sudo://'
+
+" Add SudoWrite command
+command! -nargs=1 SudoWrite write sudo://<args>
+
