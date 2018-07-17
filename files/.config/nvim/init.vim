@@ -215,6 +215,9 @@ let g:neomake_highlight_columns = 0
 " Run neomake on buffer save
 call neomake#configure#automake('w')
 
+" Fira Mono doesn't have warning sign symbol (U+26A0) so use exclamation mark
+let g:neomake_warning_sign = {'text': '!', 'texthl': 'NeomakeWarningSign'}
+
 " javascript eslint
 let g:neomake_javascript_eslint_exe = $PWD.'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
