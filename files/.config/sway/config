@@ -263,6 +263,7 @@ bar {
 # Window-specific options
 #
 for_window [class="Chromium"] border none
+for_window [class="Nightly"] border none # Firefox
 
 #
 # DPMS & auto-lock
