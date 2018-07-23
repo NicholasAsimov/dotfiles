@@ -3,9 +3,6 @@
 // Disable alt-key opening menu bar (interferes with media keybinds e.g. Alt+3)
 user_pref("ui.key.menuAccessKeyFocuses", false);
 
-// Don't hide tab bar in fullscreen
-user_pref("browser.fullscreen.autohide", false);
-
 // Make URL bar behaviour similar to Chrome
 user_pref("browser.urlbar.clickSelectsAll", true);
 user_pref("browser.urlbar.doubleClickSelectsAll", false);
