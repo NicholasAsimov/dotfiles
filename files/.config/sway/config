@@ -27,7 +27,6 @@ set $menu j4-dmenu-desktop
 
 # Wallpapers
 set $wallpaper_desktop ~/pictures/wallpapers/cube.jpg
-set $wallpaper_lockscreen ~/pictures/wallpapers/owl.png
 
 ### Output configuration
 #
@@ -64,7 +63,7 @@ output * bg $wallpaper_desktop fill
     bindsym $mod+d exec $menu
 
     # lock screen
-    bindsym $mod+period exec swaylock --image $wallpaper_lockscreen --scaling fill
+    bindsym $mod+period exec swaylock
 
     # screenshot selected container to clipboard
     bindsym Print exec swaygrabselection clipboard
@@ -269,10 +268,10 @@ for_window [class="Nightly"] border none # Firefox
 # DPMS & auto-lock
 #
 exec swayidle \
-	timeout 300 'swaylock --image $wallpaper_lockscreen --scaling fill' \
+	timeout 300 'swaylock' \
 	timeout 600 'swaymsg "output * dpms off"' \
 		 resume 'swaymsg "output * dpms on"' \
-	before-sleep 'swaylock --image $wallpaper_lockscreen --scaling fill'
+	before-sleep 'swaylock'
 
 #
 # Autostart
