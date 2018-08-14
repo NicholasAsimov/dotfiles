@@ -13,6 +13,9 @@ user_pref("browser.uidensity", 1);
 // Move sidebar to the right
 user_pref("sidebar.position_start", false);
 
+// Show notifications in bottom-right corner
+user_pref("ui.alertNotificationOrigin", 0);
+
 // Font settings
 user_pref("font.default.x-cyrillic", "sans-serif");
 user_pref("font.default.x-western", "sans-serif");
