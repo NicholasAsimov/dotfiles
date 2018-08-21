@@ -150,6 +150,27 @@ setopt histignoredups
 # Activate fzf keybindings (^R to search history, ^T to find files, M+C to cd)
 source /usr/share/fzf/key-bindings.zsh
 
+# Override CTRL-R - Paste the selected command from history into the command line.
+# This version also removes duplicates.
+# Thanks to https://github.com/junegunn/fzf/pull/1287.
+fzf-history-widget() {
+  local selected num
+  setopt localoptions noglobsubst noposixbuiltins pipefail 2> /dev/null
+  # TODO simplify this deduplication
+  selected=( $(fc -rl 1 | sort -nr | sort -uk2 | sort -nr |
+    FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
+  local ret=$?
+  if [ -n "$selected" ]; then
+    num=$selected[1]
+    if [ -n "$num" ]; then
+      zle vi-fetch-history -n $num
+    fi
+  fi
+  zle redisplay
+  typeset -f zle-line-init >/dev/null && zle zle-line-init
+  return $ret
+}
+
 # Activate fish-like syntax highlighting (has to be the last line)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
