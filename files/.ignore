@@ -2,4 +2,6 @@
 .kube/
 node_modules/
 vendor/
-**.min.js
+*.min.js
+/proc/
+/sys/
