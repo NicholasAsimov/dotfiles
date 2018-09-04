@@ -148,7 +148,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('zchee/deoplete-go', { 'build': 'make', 'on_ft': 'go' })
 
   " Language support
-  call dein#add('fatih/vim-go', { 'hook_post_update': ':GoInstallBinaries', 'on_ft': 'go' })
+  call dein#add('fatih/vim-go', { 'hook_post_update': ':GoUpdateBinaries', 'on_ft': 'go' })
   call dein#add('pangloss/vim-javascript')
   call dein#add('mxw/vim-jsx')
   call dein#add('cespare/vim-toml')
