@@ -100,13 +100,6 @@ autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
 " YAML
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-" Bindings for fzf
-nnoremap <C-g>b :Buffers<CR>
-nnoremap <C-g>g :Ag<CR>
-nnoremap <C-g>c :Commands<CR>
-nnoremap <C-g>l :BLines<CR>
-nnoremap <C-p> :Files<CR>
-
 " Autosave file when running make
 set autowrite
 
@@ -236,11 +229,11 @@ let g:jsx_ext_required = 0
 " fzf
 " =================================
 
-" Redefine :Ag command to use ignore file
-command! -bang -nargs=* Ag
-    \ call fzf#vim#ag(<q-args>,
-    \   '--path-to-ignore ~/.ignore',
-    \   <bang>0)
+nnoremap <C-g>b :Buffers<CR>
+nnoremap <C-g>g :Rg<CR>
+nnoremap <C-g>c :Commands<CR>
+nnoremap <C-g>l :BLines<CR>
+nnoremap <C-p> :Files<CR>
 
 " =================================
 " vim-latex-live-preview

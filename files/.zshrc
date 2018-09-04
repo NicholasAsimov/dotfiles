@@ -23,15 +23,14 @@ export NPM_CONFIG_PREFIX="$HOME/.npm-global"
 export PATH="$PATH:$GOPATH/bin:$NPM_CONFIG_PREFIX/bin"
 
 # fzf settings
-export FZF_DEFAULT_COMMAND="ag --path-to-ignore $HOME/.ignore --hidden -l -g ''"
+export FZF_DEFAULT_COMMAND="fd --ignore-file $HOME/.ignore --hidden --follow --type f"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --ignore-file $HOME/.ignore --hidden --type d . /"
 
 #------------------------------
 # Aliases
 #------------------------------
 alias e="$EDITOR"
-
-alias ag="ag --path-to-ignore $HOME/.ignore"
 
 alias ga="git add"
 alias gc="git commit"
