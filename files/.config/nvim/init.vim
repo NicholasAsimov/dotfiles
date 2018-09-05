@@ -61,6 +61,10 @@ inoremap jj <Esc>
 " Allow to de-tab using Shift-Tab
 inoremap <s-tab> <C-d>
 
+" Map Y to act like D and C, i.e. to yank until EOL (which is more logical,
+" but not Vi-compatible), rather than act as yy
+nnoremap Y y$
+
 " Faster split navigation using Alt+hjkl instead of Ctrl-W,hjkl
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
