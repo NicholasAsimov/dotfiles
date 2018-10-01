@@ -75,6 +75,32 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+" Define commands to open terminal in a new split buffer
+
+" Opens up a new buffer, either vertical or horizontal. Count can be used to
+" specify the number of visible columns or rows.
+fun! s:openBuffer(count, vertical)
+  let cmd = a:vertical ? 'vnew' : 'new'
+  let cmd = a:count ? a:count . cmd : cmd
+  exe cmd
+endf
+
+" Opens a new terminal buffer, but instead of doing so using 'enew' (same
+" window), it uses :vnew and :new instead. Usually, I want to open a new
+" terminal and not replace my current buffer.
+fun! s:openTerm(args, count, vertical)
+  let params = split(a:args)
+
+  call s:openBuffer(a:count, a:vertical)
+  exe 'terminal' a:args
+  exe 'startinsert'
+endf
+
+command! -count -nargs=* Term call s:openTerm(<q-args>, <count>, 0)
+command! -count -nargs=* VTerm call s:openTerm(<q-args>, <count>, 1)
+
+nmap <leader>z :Term<CR>
+
 " Save with sudo when file is read-only
 "cmap w!! w !sudo tee % > /dev/null
 
