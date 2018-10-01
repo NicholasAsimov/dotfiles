@@ -11,6 +11,10 @@ set guicursor=
 autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd TermOpen * startinsert
 
+" Folding
+set foldmethod=syntax
+set nofoldenable
+
 " Persistent undo
 set undofile
 set undodir=$HOME/.config/nvim/undo
