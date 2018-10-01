@@ -183,7 +183,8 @@ output * bg $wallpaper_desktop fill
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # TODO check why this collides with language-switch keybind since sway 1.0 alpha
+    # bindsym $mod+space focus mode_toggle
 
     # move focus to the parent container
     bindsym $mod+a focus parent
