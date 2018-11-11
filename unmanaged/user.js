@@ -13,6 +13,9 @@ user_pref("browser.uidensity", 1);
 // Move sidebar to the right
 user_pref("sidebar.position_start", false);
 
+// Dock developer toolbox to the right
+user_pref("devtools.toolbox.host", "right");
+
 // Show notifications in bottom-right corner
 user_pref("ui.alertNotificationOrigin", 0);
 
