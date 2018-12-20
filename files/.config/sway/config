@@ -283,7 +283,7 @@ exec redshift -m wayland >/dev/null 2>&1 &
 # Miscellaneous:
 #
 font pango:Roboto 8
-focus_follows_mouse false
+focus_follows_mouse no
 default_border normal 2
 
 include /etc/sway/config.d/*
