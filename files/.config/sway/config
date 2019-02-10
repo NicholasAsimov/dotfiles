@@ -30,7 +30,7 @@ set $wallpaper_desktop ~/pictures/wallpapers/cube.jpg
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/sway/)
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg $wallpaper_desktop fill
 #
 # Example configuration:
@@ -39,6 +39,16 @@ output * bg $wallpaper_desktop fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+### Idle configuration
+exec swayidle -w \
+	timeout 300 'swaylock' \
+	timeout 600 'swaymsg "output * dpms off"' \
+		 resume 'swaymsg "output * dpms on"' \
+	before-sleep 'swaylock'
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
 ### Input configuration
     input * {
         accel_profile flat
@@ -46,7 +56,6 @@ output * bg $wallpaper_desktop fill
     }
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
-# The escape symbol "\" has to be removed.
 # Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
@@ -208,16 +217,16 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10 px or 10 ppt
-    bindsym $down resize grow height 10 px or 10 ppt
-    bindsym $up resize shrink height 10 px or 10 ppt
-    bindsym $right resize grow width 10 px or 10 ppt
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
 
     # ditto, with arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
 
     # return to default mode
     bindsym Return mode "default"
@@ -246,11 +255,14 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    status_command i3blocks
     position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    status_command i3blocks
+
     colors {
-        background $bg-color
         statusline #ffffff
+        background $bg-color
         separator #757575
         #                  border             background         text
         focused_workspace  $bg-color          $bg-color          $text-color
@@ -264,15 +276,6 @@ bar {
 #
 for_window [class="Chromium"] border none
 for_window [class="Nightly"] border none # Firefox
-
-#
-# DPMS & auto-lock
-#
-exec swayidle \
-	timeout 300 'swaylock' \
-	timeout 600 'swaymsg "output * dpms off"' \
-		 resume 'swaymsg "output * dpms on"' \
-	before-sleep 'swaylock'
 
 #
 # Autostart
