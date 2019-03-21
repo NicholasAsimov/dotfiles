@@ -258,7 +258,7 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 
 " go
 let g:neomake_go_enabled_makers = ['gometalinter']
-let g:neomake_go_gometalinter_args = ['--disable-all', '--enable=vet', '--enable=golint', '--enable=errcheck', '--enable=gas', '--enable=megacheck', '--enable=misspell', '--enable=interfacer']
+let g:neomake_go_gometalinter_args = ['-e', '/usr/lib/go', '--enable=misspell']
 
 " =================================
 " vim-jsx
