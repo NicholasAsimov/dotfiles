@@ -244,6 +244,8 @@ let g:deoplete#sources#go#unimported_packages = 1
 
 let g:neomake_highlight_columns = 0
 
+" Disable showing error message next to the line of code
+let g:neomake_virtualtext_current_error = 0
 " Run neomake on buffer save
 call neomake#configure#automake('w')
 
