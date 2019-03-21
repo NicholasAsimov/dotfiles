@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 
-function install_yaourt() {
-    git clone https://aur.archlinux.org/package-query.git
-    cd package-query
+function install_yay() {
+    pushd .
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
     makepkg -si
-    cd ..
-    git clone https://aur.archlinux.org/yaourt.git
-    cd yaourt
-    makepkg -si
-    cd ..
+    popd
 }
 
 cd /tmp
 
-echo "Installing yaourt"
-install_yaourt
+echo "Installing yay"
+install_yay
