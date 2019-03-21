@@ -16,5 +16,6 @@ if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
     export XKB_DEFAULT_OPTIONS=grp:win_space_toggle,
 
     # Replace current shell with sway without spawning a new process
+    export WAYLAND_DISPLAY=wayland-0 # TODO why is this needed and not automatic?
     exec sway
 fi
