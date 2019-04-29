@@ -23,7 +23,7 @@ set $right l
 set $term env WAYLAND_DISPLAY= alacritty
 
 # Your preferred application launcher
-set $menu j4-dmenu-desktop
+set $menu j4-dmenu-desktop --no-generic --term="$term" --dmenu="dmenu -i -fn 'monospace:pixelsize=12'"
 
 # Wallpapers
 set $wallpaper_desktop ~/pictures/wallpapers/cube.jpg
