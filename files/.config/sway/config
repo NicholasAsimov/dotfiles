@@ -75,10 +75,10 @@ exec swayidle -w \
     bindsym $mod+period exec swaylock
 
     # screenshot selected container to clipboard
-    bindsym Print exec swaygrabselection clipboard
+    bindsym --release Print exec grim -g "$(slurp)" - | wl-copy
 
     # screenshot selected container to /tmp/screenshot.png file
-    bindsym Mod1+Print exec swaygrabselection /tmp/screenshot.png
+    bindsym --release Mod1+Print exec grim -g "$(slurp)" /tmp/screenshot.png
 
     # volume control
     set $volume_raise amixer set Master 5%+ && pkill -RTMIN+10 i3blocks
