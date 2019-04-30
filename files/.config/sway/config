@@ -81,21 +81,29 @@ exec swayidle -w \
     bindsym Mod1+Print exec swaygrabselection /tmp/screenshot.png
 
     # volume control
-    bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ && pkill -RTMIN+10 i3blocks
-    bindsym XF86AudioLowerVolume exec amixer set Master 5%- && pkill -RTMIN+10 i3blocks
-    bindsym XF86AudioMute exec amixer set Master toggle && pkill -RTMIN+10 i3blocks
+    set $volume_raise amixer set Master 5%+ && pkill -RTMIN+10 i3blocks
+    set $volume_lower amixer set Master 5%- && pkill -RTMIN+10 i3blocks
+    set $volume_mute amixer set Master toggle && pkill -RTMIN+10 i3blocks
 
-    bindsym Mod1+Equal exec amixer set Master 5%+ && pkill -RTMIN+10 i3blocks
-    bindsym Mod1+Minus exec amixer set Master 5%- && pkill -RTMIN+10 i3blocks
+    bindsym XF86AudioRaiseVolume exec $volume_raise
+    bindsym XF86AudioLowerVolume exec $volume_lower
+    bindsym XF86AudioMute exec $volume_mute
+
+    bindsym Mod1+Equal exec $volume_raise
+    bindsym Mod1+Minus exec $volume_lower
 
     # spotify control
-    bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-    bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-    bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+    set $spotify_play dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+    set $spotify_next dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+    set $spotify_prev dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
-    bindsym Mod1+3 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-    bindsym Mod1+2 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-    bindsym Mod1+1 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+    bindsym XF86AudioPlay exec $spotify_play
+    bindsym XF86AudioNext exec $spotify_next
+    bindsym XF86AudioPrev exec $spotify_prev
+
+    bindsym Mod1+3 exec $spotify_play
+    bindsym Mod1+2 exec $spotify_next
+    bindsym Mod1+1 exec $spotify_prev
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
