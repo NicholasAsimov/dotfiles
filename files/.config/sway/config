@@ -283,7 +283,7 @@ bar {
 # Window-specific options
 #
 for_window [class="Chromium"] border none
-for_window [class="Nightly"] border none # Firefox
+for_window [app_id="firefox"] border none
 
 #
 # Autostart
