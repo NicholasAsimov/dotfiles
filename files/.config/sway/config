@@ -18,9 +18,7 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-# TODO this temporary launches alacritty in xwayland mode
-# remove "env WAYLAND_DISPLAY=" when this [https://github.com/jwilm/alacritty/issues/760] is resolved
-set $term env WAYLAND_DISPLAY= alacritty
+set $term alacritty
 
 # Your preferred application launcher
 set $menu j4-dmenu-desktop --no-generic --term="$term" --dmenu="dmenu -i -fn 'monospace:pixelsize=12'"
