@@ -1,7 +1,7 @@
 // firefox user preferences
 
 // Don't show about:config warning
-user_pref("general.warnOnAboutConfig", false);
+user_pref("browser.aboutConfig.showWarning", false);
 
 // Disable alt-key opening menu bar (interferes with media keybinds e.g. Alt+3)
 user_pref("ui.key.menuAccessKeyFocuses", false);
