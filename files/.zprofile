@@ -12,6 +12,7 @@ fi
 # Autostart sway on 1st tty
 if [ -z "$DISPLAY" ] && [ $(tty) = /dev/tty1 ]; then
     export WAYLAND_DISPLAY=wayland-0
+    export MOZ_ENABLE_WAYLAND=1
 
     # Replace current shell with sway without spawning a new process
     exec sway
