@@ -285,6 +285,8 @@ bar {
 #
 for_window [class="Chromium"] border none
 for_window [app_id="firefox"] border none
+for_window [class="Spotify"] border none
+for_window [app_id="virt-manager"] border none
 
 #
 # Autostart
