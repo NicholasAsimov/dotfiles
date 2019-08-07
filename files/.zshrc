@@ -37,6 +37,7 @@ alias gc="git commit"
 alias gco="git checkout"
 alias gd="git diff"
 alias gs="git status"
+alias gg="git gui"
 
 alias ls="ls --color -F"
 alias ll="ls --color -lh"
