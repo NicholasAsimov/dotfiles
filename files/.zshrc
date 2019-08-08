@@ -125,6 +125,8 @@ setopt autocd
 setopt sharehistory
 # Ignore duplicates of previous command
 setopt histignoredups
+# Ignore command lines that start with space
+setopt histignorespace
 
 # Activate fzf keybindings (^R to search history, ^T to find files, M+C to cd)
 source /usr/share/fzf/key-bindings.zsh
