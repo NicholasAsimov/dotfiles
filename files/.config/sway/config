@@ -293,6 +293,7 @@ for_window [app_id="virt-manager"] border none
 #
 exec xrdb -load ~/.Xresources
 exec redshift -m wayland >/dev/null 2>&1 &
+exec mako
 
 #
 # Miscellaneous:
