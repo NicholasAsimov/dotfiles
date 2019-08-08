@@ -22,6 +22,9 @@ user_pref("devtools.toolbox.host", "right");
 // Show notifications in bottom-right corner
 user_pref("ui.alertNotificationOrigin", 0);
 
+// Disable Pocket
+user_pref("extensions.pocket.enabled", false);
+
 // Enable WebRender and hardware acceleration
 user_pref("gfx.webrender.all", true);
 user_pref("layers.acceleration.force-enabled", true);
