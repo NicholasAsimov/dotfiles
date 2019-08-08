@@ -128,6 +128,22 @@ setopt histignoredups
 # Ignore command lines that start with space
 setopt histignorespace
 
+# Step through local history when using Up/Down arrows with shared history.
+function up-line-or-history() {
+    zle set-local-history 1
+    zle .up-line-or-history
+    zle set-local-history 0
+}
+
+function down-line-or-history() {
+    zle set-local-history 1
+    zle .down-line-or-history
+    zle set-local-history 0
+}
+
+zle -N up-line-or-history
+zle -N down-line-or-history
+
 # Activate fzf keybindings (^R to search history, ^T to find files, M+C to cd)
 source /usr/share/fzf/key-bindings.zsh
 
