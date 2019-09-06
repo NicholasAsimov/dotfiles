@@ -175,7 +175,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('junegunn/fzf', { 'build': './install --bin', 'merged': 0 })
   call dein#add('junegunn/fzf.vim')
   call dein#add('neomake/neomake')
-  call dein#add('jiangmiao/auto-pairs')
+  call dein#add('tmsvg/pear-tree')
   call dein#add('tpope/vim-commentary')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-unimpaired')
@@ -320,3 +320,13 @@ let g:suda#prefix = 'sudo://'
 " Add SudoWrite command
 command! -nargs=1 SudoWrite write sudo://<args>
 
+" =================================
+" pear-tree
+" =================================
+
+let g:pear_tree_repeatable_expand = 0
+let g:pear_tree_smart_openers = 1
+let g:pear_tree_smart_closers = 1
+let g:pear_tree_smart_backspace = 1
+
+imap <Space> <Plug>(PearTreeSpace)
