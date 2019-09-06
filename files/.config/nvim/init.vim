@@ -137,6 +137,12 @@ autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
 " YAML
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+" Vimrc
+autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
+
+" Javascript
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+
 " Autosave file when running make
 set autowrite
 
