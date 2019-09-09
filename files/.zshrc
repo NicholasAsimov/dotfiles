@@ -27,6 +27,8 @@ export FZF_DEFAULT_COMMAND="fd --ignore-file $HOME/.ignore --hidden --follow --t
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --ignore-file $HOME/.ignore --hidden --type d . /"
 
+export FZF_DEFAULT_OPTS='--bind tab:down --bind btab:up --cycle'
+
 #------------------------------
 # Aliases
 #------------------------------
