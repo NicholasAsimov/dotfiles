@@ -271,8 +271,8 @@ let g:neomake_javascript_eslint_exe = $PWD.'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
 
 " go
-let g:neomake_go_enabled_makers = ['gometalinter']
-let g:neomake_go_gometalinter_args = ['-e', '/usr/lib/go', '--enable=misspell']
+let g:neomake_go_enabled_makers = ['golangci_lint']
+let g:neomake_go_golangci_lint_args = ['run', '--out-format=line-number', '--print-issued-lines=false', '--config='.$HOME.'/.golangci.yml']
 
 " =================================
 " vim-jsx-pretty
