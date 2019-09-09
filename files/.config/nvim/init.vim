@@ -189,7 +189,7 @@ if dein#load_state(s:dein_dir)
   " Language support
   call dein#add('fatih/vim-go', { 'hook_post_update': ':GoUpdateBinaries' })
   call dein#add('pangloss/vim-javascript')
-  call dein#add('mxw/vim-jsx')
+  call dein#add('maxmellon/vim-jsx-pretty')
   call dein#add('cespare/vim-toml')
   call dein#add('xuhdev/vim-latex-live-preview', { 'on_ft': 'tex' })
 
@@ -275,10 +275,19 @@ let g:neomake_go_enabled_makers = ['gometalinter']
 let g:neomake_go_gometalinter_args = ['-e', '/usr/lib/go', '--enable=misspell']
 
 " =================================
-" vim-jsx
+" vim-jsx-pretty
 " =================================
 
-let g:jsx_ext_required = 0
+" This code is brought in from vim-jsx-pretty/autoload. It doesn't execute
+" normally as pear-tree overrides it with it's own autoload file for
+" javascript filetype.
+augroup jsx_comment
+  autocmd!
+  autocmd FileType javascript let b:original_commentstring = &l:commentstring
+  autocmd FileType javascript autocmd CursorMoved <buffer> call jsx_pretty#comment#update_commentstring(b:original_commentstring)
+augroup END
+
+" TODO less colorufl syntax? especially props
 
 " =================================
 " fzf
