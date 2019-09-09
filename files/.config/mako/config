@@ -5,4 +5,5 @@ text-color=#FFFFFFFF
 margin=10,22,10,10
 border-radius=1
 default-timeout=10000
+max-icon-size=48
 # format=<b>%s</b>\n%b\n> %a
