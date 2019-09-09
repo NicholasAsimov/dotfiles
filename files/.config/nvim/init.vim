@@ -104,10 +104,11 @@ nmap <leader>z :Term<CR>
 " Save with sudo when file is read-only
 "cmap w!! w !sudo tee % > /dev/null
 
-" Disable scratch window when auto-completing
-set completeopt-=preview
+" Show completion menu even with only one element
+" and don't select suggestion automatically
+set completeopt=menuone,noselect
 
-" Open new split panes to right and bottom, which feels more natural than Vim’s default
+" Open new split panes to right and bottom
 set splitbelow
 set splitright
 
@@ -189,7 +190,6 @@ if dein#load_state(s:dein_dir)
 
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('zchee/deoplete-go', { 'build': 'make', 'on_ft': 'go' })
 
   " Language support
   call dein#add('fatih/vim-go', { 'hook_post_update': ':GoUpdateBinaries' })
@@ -227,22 +227,26 @@ let g:go_auto_type_info = 0
 " Specify custom go fmt function
 let g:go_fmt_command = "goimports"
 
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
+
 " =================================
 " deoplete.nvim
 " =================================
 
-set completeopt+=noselect
-
 " Run deoplete.nvim automatically
 let g:deoplete#enable_at_startup = 1
 
-" =================================
-" deoplete-go
-" =================================
+" Use omni completion for Go files (provided by vim-go)
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#unimported_packages = 1
+" TODO can suggestion sorting work with gopls?
+"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+" TODO figure out the minimal setup for completion with LSP after neovim
+" merges built-in LSP support (https://github.com/neovim/neovim/pull/10222).
+" Most likely vim-go's implementation of handling gopls will be obsolete.
+" Do we even need deoplete with native LSP client in neovim? Or deoplete-lsp?
 
 " =================================
 " neomake
