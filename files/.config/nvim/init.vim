@@ -147,11 +147,6 @@ autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 " Autosave file when running make
 set autowrite
 
-" Set ultisnips triggers
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
 " Set colorscheme
 colorscheme Tomorrow-Night-Eighties
 
@@ -247,6 +242,14 @@ call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 " merges built-in LSP support (https://github.com/neovim/neovim/pull/10222).
 " Most likely vim-go's implementation of handling gopls will be obsolete.
 " Do we even need deoplete with native LSP client in neovim? Or deoplete-lsp?
+
+" =================================
+" ultisnips
+" =================================
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " =================================
 " neomake
