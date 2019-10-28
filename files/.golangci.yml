@@ -20,6 +20,22 @@ linters-settings:
     # Default is to use a neutral variety of English.
     # Setting locale to US will correct the British spelling of 'colour' to 'color'.
     locale: US
+  gocritic:
+    # See https://go-critic.github.io/overview#checks-overview
+    # To check which checks are enabled run `GL_DEBUG=gocritic golangci-lint run`
+    enabled-tags:
+      - diagnostic
+      - experimental
+      - opinionated
+      - performance
+      - style
+    disabled-checks:
+      - dupImport
+      - paramTypeCombine
+      - importShadow
+    settings:
+      hugeParam:
+        sizeThreshold: 256
 
 linters:
   disable-all: true
@@ -29,13 +45,14 @@ linters:
     - dupl
     - errcheck
     - goconst
-    - goconst
+    - gocritic
     - gocyclo
     - golint
     - gosec
     - gosimple
     - govet
     - ineffassign
+    - interfacer
     - misspell
     - scopelint
     - staticcheck
