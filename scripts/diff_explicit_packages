@@ -1,0 +1,24 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+RESET='\033[0m'
+
+read -r -d '' USAGE << END
+Diff default and current explicitly installed packages.
+
+${GREEN}> package${RESET} - installed on this machine but not listed in default packages
+${RED}< package${RESET} - listed in default packages but not installed on this machine
+
+---
+END
+
+echo -e "$USAGE\n"
+
+# default packages, ignoring comments and blank lines
+default=$(sort ~/.dotfiles/packages.conf | grep -Ev '^#|^$')
+
+# current explicitly installed packages, excluding base-devel group dependencies
+installed=$(comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sort))
+
+diff --color=always <(echo "$default") <(echo "$installed") | grep '[<>]'
