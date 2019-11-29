@@ -236,7 +236,7 @@ syntax enable
 " vim-go
 " =================================
 
-" Do not automatically show identifier information
+" Don't automatically show identifier information
 " because it conflicts with linting messages
 let g:go_auto_type_info = 0
 
@@ -245,6 +245,12 @@ let g:go_fmt_command = "goimports"
 
 let g:go_def_mode = 'gopls'
 let g:go_info_mode = 'gopls'
+
+let g:go_gopls_comleted_unimported = 1
+
+" Don't highlight diagnostics from gopls
+let go_highlight_diagnostic_errors = 0
+let go_highlight_diagnostic_warnings = 0
 
 " =================================
 " deoplete.nvim
