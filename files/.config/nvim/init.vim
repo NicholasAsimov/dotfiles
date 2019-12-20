@@ -252,6 +252,8 @@ let g:go_gopls_comleted_unimported = 1
 let go_highlight_diagnostic_errors = 0
 let go_highlight_diagnostic_warnings = 0
 
+let g:go_doc_popup_window = 0
+
 " =================================
 " deoplete.nvim
 " =================================
