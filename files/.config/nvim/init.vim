@@ -323,8 +323,23 @@ augroup END
 " fzf
 " =================================
 
+" Version that searches hidden files
+command! -bang -nargs=* MyRg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case --hidden '.shellescape(<q-args>),
+  \   1,
+  \   <bang>0)
+
+" Version that doesn't include filename in search filter
+command! -nargs=* MyRg2
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>),
+  \   1,
+  \   {'options': '--delimiter : --nth 2..'})
+
 nnoremap <C-g>b :Buffers<CR>
-nnoremap <C-g>g :Rg<CR>
+" nnoremap <C-g>g :Rg<CR>
+nnoremap <C-g>g :MyRg<CR>
 nnoremap <C-g>c :Commands<CR>
 nnoremap <C-g>l :BLines<CR>
 nnoremap <C-p> :Files<CR>
