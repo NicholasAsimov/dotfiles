@@ -203,6 +203,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('machakann/vim-highlightedyank')
   call dein#add('lambdalisue/suda.vim')
   call dein#add('AndrewRadev/splitjoin.vim')
+  call dein#add('tommcdo/vim-lion')
 
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
@@ -375,3 +376,9 @@ let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
 
 imap <Space> <Plug>(PearTreeSpace)
+
+" =================================
+" vim-lion
+" =================================
+
+let g:lion_squeeze_spaces = 1
