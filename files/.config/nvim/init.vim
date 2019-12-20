@@ -382,3 +382,7 @@ imap <Space> <Plug>(PearTreeSpace)
 " =================================
 
 let g:lion_squeeze_spaces = 1
+
+
+" Get used to floating menu in wildmenu and remove this
+set wildoptions=tagfile
