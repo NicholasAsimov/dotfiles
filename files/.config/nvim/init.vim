@@ -294,6 +294,7 @@ let g:neomake_virtualtext_current_error = 0
 call neomake#configure#automake('w')
 
 " Fira Mono doesn't have warning sign symbol (U+26A0) so use exclamation mark
+let g:neomake_error_sign   = {'text': '!', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '!', 'texthl': 'NeomakeWarningSign'}
 
 " javascript eslint
@@ -301,7 +302,7 @@ let g:neomake_javascript_eslint_exe = $PWD.'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
 
 " go
-let g:neomake_go_enabled_makers = ['golangci_lint']
+let g:neomake_go_enabled_makers = ['go', 'golangci_lint']
 let g:neomake_go_golangci_lint_args = ['run', '--out-format=line-number', '--print-issued-lines=false', '--config='.$HOME.'/.golangci.yml']
 
 " =================================
