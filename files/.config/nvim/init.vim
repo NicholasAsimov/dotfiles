@@ -142,7 +142,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
 
 " Javascript
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript,typescript setlocal ts=2 sts=2 sw=2 expandtab
 
 " Enable spellcheck for text files
 autocmd FileType markdown,text,latex,tex setlocal spell
@@ -204,6 +204,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('lambdalisue/suda.vim')
   call dein#add('AndrewRadev/splitjoin.vim')
   call dein#add('tommcdo/vim-lion')
+  call dein#add('jaawerth/nrun.vim')
 
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
@@ -212,6 +213,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('fatih/vim-go', { 'hook_post_update': ':GoUpdateBinaries' })
   call dein#add('pangloss/vim-javascript')
   call dein#add('maxmellon/vim-jsx-pretty')
+  call dein#add('leafgarland/typescript-vim')
   call dein#add('cespare/vim-toml')
   call dein#add('xuhdev/vim-latex-live-preview', { 'on_ft': 'tex' })
 
@@ -297,9 +299,15 @@ call neomake#configure#automake('w')
 let g:neomake_error_sign   = {'text': '!', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '!', 'texthl': 'NeomakeWarningSign'}
 
-" javascript eslint
-let g:neomake_javascript_eslint_exe = $PWD.'/node_modules/.bin/eslint'
+" javascript
 let g:neomake_javascript_enabled_makers = ['eslint']
+autocmd FileType javascript let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
+
+" typescript
+let g:neomake_typescript_enabled_makers = ['tsc', 'tslint']
+autocmd FileType typescript
+      \ let b:neomake_typescript_tsc_exe = nrun#Which('tsc') |
+      \ let b:neomake_typescript_tslint_exe = nrun#Which('tslint')
 
 " go
 let g:neomake_go_enabled_makers = ['go', 'golangci_lint']
