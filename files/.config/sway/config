@@ -50,7 +50,7 @@ exec swayidle -w \
 ### Input configuration
     input * {
         accel_profile flat
-        pointer_accel 0
+        pointer_accel 0.25
 
         xkb_layout "us,ru"
         xkb_options "grp:win_space_toggle,"
