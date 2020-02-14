@@ -304,10 +304,11 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 autocmd FileType javascript let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
 
 " typescript
-let g:neomake_typescript_enabled_makers = ['tsc', 'tslint']
+let g:neomake_typescript_enabled_makers = ['tsc', 'eslint']
+
 autocmd FileType typescript
       \ let b:neomake_typescript_tsc_exe = nrun#Which('tsc') |
-      \ let b:neomake_typescript_tslint_exe = nrun#Which('tslint')
+      \ let b:neomake_typescript_eslint_exe = nrun#Which('eslint')
 
 " go
 let g:neomake_go_enabled_makers = ['go', 'golangci_lint']
