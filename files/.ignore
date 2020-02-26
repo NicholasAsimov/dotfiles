@@ -1,7 +1,9 @@
 .git/
+.hg/
 .kube/
 node_modules/
 vendor/
 *.min.js
 /proc/
 /sys/
+faservices_exp/
