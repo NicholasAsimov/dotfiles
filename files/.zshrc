@@ -118,6 +118,7 @@ compinit
 # Kubernetes client completion
 source <(kubectl completion zsh)
 source <(helm completion zsh)
+source <(stern --completion=zsh)
 
 #------------------------------
 # Miscellaneous
