@@ -141,8 +141,8 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " Vimrc
 autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
 
-" Javascript
-autocmd FileType javascript,typescript setlocal ts=2 sts=2 sw=2 expandtab
+" Frontend
+autocmd FileType javascript,typescript,html,css setlocal ts=2 sts=2 sw=2 expandtab
 
 " Enable spellcheck for text files
 autocmd FileType markdown,text,latex,tex setlocal spell
