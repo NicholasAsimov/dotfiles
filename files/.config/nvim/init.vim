@@ -208,8 +208,10 @@ if dein#load_state(s:dein_dir)
 
   " Async autocomplete
   call dein#add('Shougo/deoplete.nvim')
+  call dein#add('Shougo/deoplete-lsp')
 
   " Language support
+  call dein#add('neovim/nvim-lsp')
   call dein#add('fatih/vim-go', { 'hook_post_update': ':GoUpdateBinaries' })
   call dein#add('pangloss/vim-javascript')
   call dein#add('maxmellon/vim-jsx-pretty')
@@ -329,6 +331,44 @@ augroup jsx_comment
 augroup END
 
 " TODO less colorufl syntax? especially props
+
+" =================================
+" nvim-lsp
+" =================================
+
+lua << EOF
+
+local nvim_lsp = require'nvim_lsp'
+nvim_lsp.tsserver.setup{}
+
+-- this 'do' block disables lsp diagnostics
+do
+  local method = 'textDocument/publishDiagnostics'
+  local default_callback = vim.lsp.callbacks[method]
+  vim.lsp.callbacks[method] = function(err, method, result, client_id)
+    -- disable diagnostics
+    do return end
+    default_callback(err, method, result, client_id)
+  end
+end
+
+EOF
+
+" TODO add another LSP servers?
+autocmd Filetype typescript call SetLSPOptions()
+
+function SetLSPOptions()
+  " Use LSP omni-completion in TS files.
+  setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
+  nnoremap <buffer> <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+  nnoremap <buffer> <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <buffer> <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+  nnoremap <buffer> <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <buffer> <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+  nnoremap <buffer> <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+  nnoremap <buffer> <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+endfunction
 
 " =================================
 " fzf
