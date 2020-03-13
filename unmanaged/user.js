@@ -29,6 +29,9 @@ user_pref("extensions.pocket.enabled", false);
 user_pref("gfx.webrender.all", true);
 user_pref("layers.acceleration.force-enabled", true);
 
+// Enable DMA-BUF backends
+user_pref("widget.wayland-dmabuf-vaapi.enabled", true);
+user_pref("widget.wayland-dmabuf-webgl.enabled", true);
 
 // Font settings
 user_pref("font.default.x-cyrillic", "sans-serif");
