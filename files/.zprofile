@@ -15,6 +15,9 @@ if [ -z "$DISPLAY" ] && [ $(tty) = /dev/tty1 ]; then
     # export WAYLAND_DISPLAY=wayland-0
     export MOZ_ENABLE_WAYLAND=1
 
+    export XDG_CURRENT_DESKTOP=sway
+    export XDG_SESSION_TYPE=wayland
+
     # Replace current shell with sway without spawning a new process
     exec sway
 fi
