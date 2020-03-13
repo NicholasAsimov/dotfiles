@@ -29,8 +29,6 @@ user_pref("extensions.pocket.enabled", false);
 user_pref("gfx.webrender.all", true);
 user_pref("layers.acceleration.force-enabled", true);
 
-// Spoof user-agent for specific websites
-user_pref("general.useragent.override.skype.com", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36");
 
 // Font settings
 user_pref("font.default.x-cyrillic", "sans-serif");
