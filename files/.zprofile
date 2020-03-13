@@ -11,7 +11,8 @@ fi
 
 # Autostart sway on 1st tty
 if [ -z "$DISPLAY" ] && [ $(tty) = /dev/tty1 ]; then
-    export WAYLAND_DISPLAY=wayland-0
+    # TODO this is now handled by Arch sway package (https://bugs.archlinux.org/task/63021)
+    # export WAYLAND_DISPLAY=wayland-0
     export MOZ_ENABLE_WAYLAND=1
 
     # Replace current shell with sway without spawning a new process
