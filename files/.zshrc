@@ -48,6 +48,8 @@ alias ll="ls --color -lh"
 alias vi="nvim"
 alias vim="nvim"
 
+alias diff="git diff --no-index"
+
 alias vimconf="vi ~/.config/nvim/init.vim"
 
 #------------------------------
