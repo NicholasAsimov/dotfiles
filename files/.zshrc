@@ -54,6 +54,13 @@ alias vimconf="vi ~/.config/nvim/init.vim"
 
 function pkginfo { pacman -Qi $1 && pactree -r $1 }
 
+
+# jq that ignores invalid json lines.
+# Helpful for streaming mixed json and plaintext logs
+function jqq {
+    jq -R -r "${1:-.} as \$line | try fromjson catch \$line"
+}
+
 #------------------------------
 # Keybindings
 #------------------------------
