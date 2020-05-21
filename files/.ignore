@@ -6,4 +6,5 @@ vendor/
 *.min.js
 /proc/
 /sys/
+/var/cache/
 faservices_exp/
