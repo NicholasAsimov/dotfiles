@@ -52,6 +52,8 @@ alias diff="git diff --no-index"
 
 alias vimconf="vi ~/.config/nvim/init.vim"
 
+function pkginfo { pacman -Qi $1 && pactree -r $1 }
+
 #------------------------------
 # Keybindings
 #------------------------------
