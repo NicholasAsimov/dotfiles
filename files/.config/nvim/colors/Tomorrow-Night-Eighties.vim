@@ -1,3 +1,4 @@
+" TODO replace with https://github.com/chriskempson/base16-vim/blob/master/colors/base16-tomorrow-night-eighties.vim
 " Tomorrow Night Eighties - Full Colour and 256 Colour
 " http://chriskempson.com
 "
@@ -286,7 +287,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" Standard Highlighting
 	call <SID>X("Comment", s:comment, "", "")
-	call <SID>X("Todo", s:comment, s:background, "")
+	call <SID>X("Todo", s:yellow, s:background, "")
 	call <SID>X("Title", s:comment, "", "")
 	call <SID>X("Identifier", s:red, "", "none")
 	call <SID>X("Statement", s:foreground, "", "")
@@ -394,7 +395,6 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("jsThis", s:purple, "", "")
 
 	call <SID>X("jsExportDefault", s:orange, "", "")
-	call <SID>X("jsCommentTodo", s:yellow, "", "")
 
 	" CoffeeScript Highlighting
 	call <SID>X("coffeeRepeat", s:purple, "", "")
@@ -445,7 +445,6 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("goStatement", s:purple, "", "")
 	call <SID>X("goConditional", s:purple, "", "")
 	call <SID>X("goConstants", s:orange, "", "")
-	call <SID>X("goTodo", s:yellow, "", "")
 	call <SID>X("goDeclType", s:blue, "", "")
 	call <SID>X("goBuiltins", s:purple, "", "")
 	call <SID>X("goRepeat", s:purple, "", "")
