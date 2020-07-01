@@ -101,6 +101,9 @@ command! -count -nargs=* VTerm call s:openTerm(<q-args>, <count>, 1)
 
 nmap <leader>z :Term<CR>
 
+" Quickly close location and quickfix windows
+nmap <leader>m :cclose<CR>:lclose<CR>
+
 " Save with sudo when file is read-only
 "cmap w!! w !sudo tee % > /dev/null
 
