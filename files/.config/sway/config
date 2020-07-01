@@ -157,6 +157,9 @@ exec swayidle -w \
     set $workspace9 "9: Builds"
     set $workspace10 "10: Music"
 
+    # assign specific workspaces to outputs
+    # example: workspace $workspace7 output DP-2
+
     # switch to workspace
     bindsym $mod+1 workspace $workspace1
     bindsym $mod+2 workspace $workspace2
