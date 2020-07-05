@@ -50,6 +50,8 @@ alias vim="nvim"
 
 alias diff="git diff --no-index"
 
+alias tf="terraform"
+
 alias vimconf="vi ~/.config/nvim/init.vim"
 
 function pkginfo { pacman -Qi $1 && pactree -r $1 }
