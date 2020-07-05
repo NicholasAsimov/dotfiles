@@ -220,6 +220,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('maxmellon/vim-jsx-pretty')
   call dein#add('leafgarland/typescript-vim')
   call dein#add('cespare/vim-toml')
+  call dein#add('hashivim/vim-terraform')
   call dein#add('xuhdev/vim-latex-live-preview', { 'on_ft': 'tex' })
 
   " Required:
@@ -342,7 +343,9 @@ augroup END
 lua << EOF
 
 local nvim_lsp = require'nvim_lsp'
+
 nvim_lsp.tsserver.setup{}
+nvim_lsp.terraformls.setup{}
 
 -- this 'do' block disables lsp diagnostics
 do
@@ -357,11 +360,11 @@ end
 
 EOF
 
-" TODO add another LSP servers?
-autocmd Filetype typescript call SetLSPOptions()
+" TODO add other LSP servers?
+autocmd Filetype typescript,terraform call SetLSPOptions()
 
 function SetLSPOptions()
-  " Use LSP omni-completion in TS files.
+  " Use LSP omni-completion.
   setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
   nnoremap <buffer> <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -451,6 +454,11 @@ imap <Space> <Plug>(PearTreeSpace)
 " =================================
 
 let g:lion_squeeze_spaces = 1
+
+" =================================
+" vim-terraform
+" =================================
+let g:terraform_fmt_on_save = 1
 
 
 " Get used to floating menu in wildmenu and remove this
