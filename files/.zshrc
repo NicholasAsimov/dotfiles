@@ -11,6 +11,7 @@ SAVEHIST=999999
 export TERM=xterm-256color
 export EDITOR=nvim
 export VISUAL=nvim
+export DIFFPROG="nvim -d"
 
 # `less` configuration
 # R - interpret ANSI escape sequences
