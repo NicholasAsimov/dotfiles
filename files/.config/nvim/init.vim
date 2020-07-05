@@ -272,15 +272,11 @@ let g:go_doc_popup_window = 0
 let g:deoplete#enable_at_startup = 1
 
 " Use omni completion for Go files (provided by vim-go)
+" TODO replace vim-go completion with nvim-lsp?
 call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 
 " TODO can suggestion sorting work with gopls?
 "let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-
-" TODO figure out the minimal setup for completion with LSP after neovim
-" merges built-in LSP support (https://github.com/neovim/neovim/pull/10222).
-" Most likely vim-go's implementation of handling gopls will be obsolete.
-" Do we even need deoplete with native LSP client in neovim? Or deoplete-lsp?
 
 " =================================
 " ultisnips
