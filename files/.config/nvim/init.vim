@@ -370,6 +370,7 @@ function SetLSPOptions()
   nnoremap <buffer> <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
   nnoremap <buffer> <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
   nnoremap <buffer> <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+  nnoremap <buffer> <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
 endfunction
 
 " =================================
