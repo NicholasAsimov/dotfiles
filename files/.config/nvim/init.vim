@@ -398,6 +398,9 @@ nnoremap <C-g>c :Commands<CR>
 nnoremap <C-g>l :BLines<CR>
 nnoremap <C-p> :Files<CR>
 
+" Disable preview window
+let g:fzf_preview_window = ''
+
 " =================================
 " vim-latex-live-preview
 " =================================
