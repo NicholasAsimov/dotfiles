@@ -128,10 +128,12 @@ zle -N down-line-or-beginning-search
 autoload -Uz compinit
 compinit
 
-# Kubernetes client completion
+# Load CLI tools completions
 source <(kubectl completion zsh)
 source <(helm completion zsh)
 source <(stern --completion=zsh)
+
+complete -o nospace -C /usr/bin/terraform terraform
 
 #------------------------------
 # Miscellaneous
