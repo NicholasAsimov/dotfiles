@@ -4,6 +4,8 @@
 node_modules/
 vendor/
 *.min.js
+package-lock.json
+go.sum
 /proc/
 /sys/
 /var/cache/
