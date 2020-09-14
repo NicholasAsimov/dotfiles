@@ -401,6 +401,9 @@ nnoremap <C-p> :Files<CR>
 " Disable preview window
 let g:fzf_preview_window = ''
 
+" Use old default layout instead of popup window
+let g:fzf_layout = { 'down': '40%' }
+
 " =================================
 " vim-latex-live-preview
 " =================================
