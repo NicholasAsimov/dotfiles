@@ -104,9 +104,6 @@ nmap <leader>z :Term<CR>
 " Quickly close location and quickfix windows
 nmap <leader>m :cclose<CR>:lclose<CR>
 
-" Save with sudo when file is read-only
-"cmap w!! w !sudo tee % > /dev/null
-
 " Show completion menu even with only one element
 " and don't select suggestion automatically
 set completeopt=menuone,noselect
@@ -435,11 +432,10 @@ augroup END
 " suda.vim
 " =================================
 
-" Use sudo:// prefix instead of suda://
-let g:suda#prefix = 'sudo://'
+" Alias SudoWrite command
+command SudoWrite SudaWrite
 
-" Add SudoWrite command
-command! -nargs=1 SudoWrite write sudo://<args>
+cmap w!! SudaWrite
 
 " =================================
 " pear-tree
