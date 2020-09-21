@@ -1,17 +1,5 @@
 # all available settings of specific linters
 linters-settings:
-  govet:
-    # report about shadowed variables
-    check-shadowing: true
-  golint:
-    # minimal confidence for issues, default is 0.8
-    min-confidence: 0.8
-  gocognit:
-    # minimal code complexity to report, 30 by default (but we recommend 10-20)
-    min-complexity: 10
-  maligned:
-    # print struct with more effective memory layout or not, false by default
-    suggest-new: true
   dupl:
     # tokens count to trigger issue, 150 by default
     threshold: 100
@@ -20,11 +8,9 @@ linters-settings:
     # 'default' case is present, even if all enum members aren't listed in the
     # switch
     default-signifies-exhaustive: false
-  misspell:
-    # Correct spellings using locale preferences for US or UK.
-    # Default is to use a neutral variety of English.
-    # Setting locale to US will correct the British spelling of 'colour' to 'color'.
-    locale: US
+  gocognit:
+    # minimal code complexity to report, 30 by default (but we recommend 10-20)
+    min-complexity: 10
   gocritic:
     # See https://go-critic.github.io/overview#checks-overview
     # To check which checks are enabled run `GL_DEBUG=gocritic golangci-lint run`
@@ -34,16 +20,32 @@ linters-settings:
       - opinionated
       - performance
       - style
+
     disabled-checks:
       - dupImport
       - paramTypeCombine
       - importShadow
+
     settings:
       hugeParam:
         sizeThreshold: 256
   godot:
     # check all top-level comments, not only declarations
     check-all: false
+  golint:
+    # minimal confidence for issues, default is 0.8
+    min-confidence: 0.8
+  govet:
+    # report about shadowed variables
+    check-shadowing: true
+  maligned:
+    # print struct with more effective memory layout or not, false by default
+    suggest-new: true
+  misspell:
+    # Correct spellings using locale preferences for US or UK.
+    # Default is to use a neutral variety of English.
+    # Setting locale to US will correct the British spelling of 'colour' to 'color'.
+    locale: US
 
 linters:
   disable-all: true
