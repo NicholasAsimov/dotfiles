@@ -211,7 +211,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/deoplete-lsp')
 
   " Language support
-  call dein#add('neovim/nvim-lsp')
+  call dein#add('neovim/nvim-lspconfig')
   call dein#add('fatih/vim-go', { 'hook_post_update': ':GoUpdateBinaries' })
   call dein#add('pangloss/vim-javascript')
   call dein#add('maxmellon/vim-jsx-pretty')
