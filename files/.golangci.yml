@@ -55,6 +55,7 @@ linters:
     - dupl
     - errcheck
     - exhaustive
+    - exportloopref
     - gocognit
     - goconst
     - gocritic
