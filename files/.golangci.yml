@@ -15,6 +15,11 @@ linters-settings:
   dupl:
     # tokens count to trigger issue, 150 by default
     threshold: 100
+  exhaustive:
+    # indicates that switch statements are to be considered exhaustive if a
+    # 'default' case is present, even if all enum members aren't listed in the
+    # switch
+    default-signifies-exhaustive: false
   misspell:
     # Correct spellings using locale preferences for US or UK.
     # Default is to use a neutral variety of English.
@@ -36,6 +41,9 @@ linters-settings:
     settings:
       hugeParam:
         sizeThreshold: 256
+  godot:
+    # check all top-level comments, not only declarations
+    check-all: false
 
 linters:
   disable-all: true
@@ -44,9 +52,11 @@ linters:
     - deadcode
     - dupl
     - errcheck
+    - exhaustive
     - gocognit
     - goconst
     - gocritic
+    - godot
     - golint
     - gosec
     - gosimple
