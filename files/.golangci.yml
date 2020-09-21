@@ -76,39 +76,12 @@ linters:
     - varcheck
 
 issues:
-  # Independently from option `exclude` we use default exclude patterns,
-  # it can be disabled by this option. To list all
-  # excluded by default patterns execute `golangci-lint run --help`.
-  # Default value for this option is true.
-  exclude-use-default: false
-
+  # List of regexps of issue texts to exclude, empty list by default.
+  # But independently from this option we use default exclude patterns,
+  # it can be disabled by `exclude-use-default: false`. To list all
+  # excluded by default patterns execute `golangci-lint run --help`
   exclude:
-    # errcheck: Almost all programs ignore errors on these functions and in most cases it's ok
-    - Error return value of .((os\.)?std(out|err)\..*|.*Close|.*Flush|os\.Remove(All)?|.*printf?|os\.(Un)?Setenv). is not checked
-
-    # golint: Annoying issue about not having a comment. The rare codebase has such comments
-    # - (comment on exported (method|function|type|const)|should have( a package)? comment|comment should be of the form)
-
-    # golint: False positive when tests are defined in package 'test'
-    - func name will be used as test\.Test.* by other packages, and that stutters; consider calling this
-
-    # govet: Common false positives
-    - (possible misuse of unsafe.Pointer|should have signature)
-
-    # gosec: Too many false-positives on 'unsafe' usage
-    - Use of unsafe calls should be audited
-
-    # gosec: Too many false-positives for parametrized shell calls
-    - Subprocess launch(ed with variable|ing should be audited)
-
-    # gosec: Duplicated errcheck checks
-    - G104
-
-    # gosec: Too many issues in popular repos
-    # - (Expect directory permissions to be 0750 or less|Expect file permissions to be 0600 or less)
-
-    # gosec: False positive is triggered by 'src, err := ioutil.ReadFile(filename)'
-    - Potential file inclusion via variable
+    - abcdef
 
   # Excluding configuration per-path, per-linter, per-text and per-source
   exclude-rules:
@@ -132,6 +105,21 @@ issues:
     - linters:
         - lll
       source: "^//go:generate "
+
+  # Independently from option `exclude` we use default exclude patterns,
+  # it can be disabled by this option. To list all
+  # excluded by default patterns execute `golangci-lint run --help`.
+  # Default value for this option is true.
+  exclude-use-default: true
+
+  # The default value is false. If set to true exclude and exclude-rules
+  # regular expressions become case sensitive.
+  exclude-case-sensitive: false
+
+  # The list of ids of default excludes to include or disable. By default it's empty.
+  include:
+    - EXC0002 # disable excluding of issues about comments from golint
+    - EXC0009 # disable excluding of issues about file/directory permissions
 
   # Show only new issues: if there are unstaged changes or untracked files,
   # only those changes are analyzed, else only changes in HEAD~ are analyzed.
