@@ -246,20 +246,31 @@ syntax enable
 " because it conflicts with linting messages
 let g:go_auto_type_info = 0
 
-" Specify custom go fmt function
-let g:go_fmt_command = "goimports"
+" Run format and imports on save
+let g:go_fmt_autosave = 1
+let g:go_imports_autosave = 1
 
-let g:go_def_mode = 'gopls'
-let g:go_info_mode = 'gopls'
+" Use gofumpt format mode
+" let g:go_gopls_gofumpt = 1
 
+" Specify prefix for imports that will be grouped separately
+let g:go_gopls_local = v:null
+
+" Misc gopls settings
 let g:go_gopls_complete_unimported = 1
 let g:go_diagnostics_enabled = 0
 
 " Don't highlight diagnostics from gopls
-let go_highlight_diagnostic_errors = 0
-let go_highlight_diagnostic_warnings = 0
+let g:go_highlight_diagnostic_errors = 0
+let g:go_highlight_diagnostic_warnings = 0
 
 let g:go_doc_popup_window = 0
+
+" Use gopls
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
+let g:go_fmt_command = 'gopls'
+let g:go_imports_mode = 'gopls'
 
 " =================================
 " deoplete.nvim
