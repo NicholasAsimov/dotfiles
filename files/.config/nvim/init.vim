@@ -217,6 +217,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('maxmellon/vim-jsx-pretty')
   call dein#add('leafgarland/typescript-vim')
   call dein#add('cespare/vim-toml')
+  call dein#add('towolf/vim-helm')
   call dein#add('hashivim/vim-terraform')
   call dein#add('xuhdev/vim-latex-live-preview', { 'on_ft': 'tex' })
 
@@ -464,6 +465,13 @@ imap <Space> <Plug>(PearTreeSpace)
 " =================================
 
 let g:lion_squeeze_spaces = 1
+
+" =================================
+" vim-helm
+" =================================
+
+" Don't use vim-helm for yaml files (only .tpl)
+autocmd BufRead,BufNewFile */templates/*.yaml set ft=yaml
 
 " =================================
 " vim-terraform
