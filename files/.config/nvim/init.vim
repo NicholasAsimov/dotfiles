@@ -347,10 +347,12 @@ augroup END
 
 lua << EOF
 
-local nvim_lsp = require'nvim_lsp'
+local lspconfig = require'lspconfig'
 
-nvim_lsp.tsserver.setup{}
-nvim_lsp.terraformls.setup{}
+lspconfig.tsserver.setup{}
+lspconfig.terraformls.setup{
+  cmd = {'terraform-lsp'};
+}
 
 -- this 'do' block disables lsp diagnostics
 do
