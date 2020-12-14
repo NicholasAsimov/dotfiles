@@ -354,20 +354,11 @@ lspconfig.terraformls.setup{
   cmd = {'terraform-lsp'};
 }
 
--- this 'do' block disables lsp diagnostics
-do
-  local method = 'textDocument/publishDiagnostics'
-  local default_callback = vim.lsp.callbacks[method]
-  vim.lsp.callbacks[method] = function(err, method, result, client_id)
-    -- disable diagnostics
-    do return end
-    default_callback(err, method, result, client_id)
-  end
-end
+-- disable diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
 EOF
 
-" TODO add other LSP servers?
 autocmd Filetype typescript,terraform call SetLSPOptions()
 
 function SetLSPOptions()
