@@ -299,7 +299,8 @@ for_window [class="sdl-app-debug"] floating enable; move position center
 # Autostart
 #
 exec xrdb -load ~/.Xresources
-exec redshift -m wayland
+exec /usr/lib/geoclue-2.0/demos/agent
+exec gammastep
 exec mako
 
 #
