@@ -265,7 +265,7 @@ let g:deoplete#enable_at_startup = 1
 
 " Use omni completion for Go files (provided by vim-go)
 " TODO replace vim-go completion with nvim-lsp?
-call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+" call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 
 " TODO can suggestion sorting work with gopls?
 "let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
@@ -332,6 +332,8 @@ lua << EOF
 
 local lspconfig = require'lspconfig'
 
+-- TODO https://github.com/golang/tools/blob/master/gopls/doc/settings.md
+lspconfig.gopls.setup{}
 lspconfig.tsserver.setup{}
 lspconfig.terraformls.setup{
   cmd = {'terraform-lsp'};
@@ -342,7 +344,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
 EOF
 
-autocmd Filetype typescript,terraform call SetLSPOptions()
+autocmd Filetype go,typescript,terraform call SetLSPOptions()
 
 function SetLSPOptions()
   " Use LSP omni-completion.
