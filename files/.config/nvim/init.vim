@@ -171,6 +171,7 @@ if dein#load_state(s:dein_dir)
 
   " Add or remove your plugins here:
   call dein#add('SirVer/ultisnips')
+  call dein#add('hrsh7th/nvim-compe')
   call dein#add('junegunn/fzf', { 'build': './install --bin', 'merged': 0 })
   call dein#add('junegunn/fzf.vim')
   call dein#add('neomake/neomake')
@@ -188,10 +189,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('AndrewRadev/splitjoin.vim')
   call dein#add('tommcdo/vim-lion')
   call dein#add('jaawerth/nrun.vim')
-
-  " Async autocomplete
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('Shougo/deoplete-lsp')
 
   " Language support
   call dein#add('neovim/nvim-lspconfig')
@@ -257,18 +254,29 @@ let g:go_fmt_command = 'gopls'
 let g:go_imports_mode = 'gopls'
 
 " =================================
-" deoplete.nvim
+" nvim-compe
 " =================================
 
-" Run deoplete.nvim automatically
-let g:deoplete#enable_at_startup = 1
-
-" Use omni completion for Go files (provided by vim-go)
-" TODO replace vim-go completion with nvim-lsp?
-" call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
-
-" TODO can suggestion sorting work with gopls?
-"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:compe = {
+  \ 'enabled': v:true,
+  \ 'autocomplete': v:true,
+  \ 'debug': v:false,
+  \ 'min_length': 2,
+  \ 'preselect': 'enable',
+  \ 'documentation': v:false,
+  \
+  \ 'source': {
+    \ 'path': v:true,
+    \ 'buffer': v:true,
+    \ 'calc': v:false,
+    \ 'nvim_lsp': v:true,
+    \ 'nvim_lua': v:false,
+    \ 'vsnip': v:false,
+    \ 'ultisnips': v:true,
+    \ 'luasnip': v:false,
+    \ 'emoji': v:false,
+  \ },
+\ }
 
 " =================================
 " ultisnips
