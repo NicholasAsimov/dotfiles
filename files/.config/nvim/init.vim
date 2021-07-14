@@ -235,7 +235,7 @@ let g:go_imports_autosave = 1
 let g:go_gopls_gofumpt = 1
 
 " Specify prefix for imports that will be grouped separately
-let g:go_gopls_local = "faservices"
+let g:go_gopls_local = "github.mb-internal.com"
 
 " Misc gopls settings
 let g:go_gopls_complete_unimported = 1
