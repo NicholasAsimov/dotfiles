@@ -262,7 +262,7 @@ let g:compe = {
   \ 'autocomplete': v:true,
   \ 'debug': v:false,
   \ 'min_length': 2,
-  \ 'preselect': 'enable',
+  \ 'preselect': 'disable',
   \ 'documentation': v:false,
   \
   \ 'source': {
