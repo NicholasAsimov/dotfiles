@@ -292,6 +292,7 @@ for_window [app_id="firefox"] border none
 for_window [class="Spotify"] border none
 for_window [class="jetbrains-goland"] border none
 for_window [app_id="virt-manager"] border none
+for_window [app_id="telegramdesktop"] border none
 for_window [class="Git-gui"] fullscreen
 for_window [class="sdl-app-debug"] floating enable; move position center
 
