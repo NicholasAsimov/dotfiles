@@ -35,6 +35,8 @@ export MOZCONFIG="$HOME/.mozconfig"
 export CHROME_BIN=/usr/bin/chromium
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
+export AWS_DEFAULT_PROFILE=nebula-dev-mwb-dev
+
 #------------------------------
 # Aliases
 #------------------------------
@@ -140,6 +142,7 @@ source <(helm completion zsh)
 source <(stern --completion=zsh)
 
 complete -o nospace -C /usr/bin/terraform terraform
+complete -C /usr/bin/aws_completer aws
 
 #------------------------------
 # Miscellaneous
