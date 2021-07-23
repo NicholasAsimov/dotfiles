@@ -30,6 +30,11 @@ export FZF_ALT_C_COMMAND="fd --ignore-file $HOME/.ignore --hidden --type d . /"
 
 export FZF_DEFAULT_OPTS='--bind ctrl-a:select-all --bind tab:down --bind btab:up --cycle'
 
+# misc
+export MOZCONFIG="$HOME/.mozconfig"
+export CHROME_BIN=/usr/bin/chromium
+export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+
 #------------------------------
 # Aliases
 #------------------------------
