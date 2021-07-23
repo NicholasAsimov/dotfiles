@@ -430,10 +430,7 @@ augroup END
 " suda.vim
 " =================================
 
-" Alias SudoWrite command
-command SudoWrite SudaWrite
-
-cmap w!! SudaWrite
+cmap w!! SudaWrite %
 
 " =================================
 " pear-tree
