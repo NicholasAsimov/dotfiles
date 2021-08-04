@@ -336,9 +336,7 @@ lspconfig.gopls.setup{
   };
 }
 lspconfig.tsserver.setup{}
-lspconfig.terraformls.setup{
-  cmd = {'terraform-lsp'};
-}
+lspconfig.terraformls.setup{}
 
 -- disable diagnostics
 vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
