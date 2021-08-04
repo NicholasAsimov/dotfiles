@@ -223,35 +223,20 @@ syntax enable
 " vim-go
 " =================================
 
-" Don't automatically show identifier information
-" because it conflicts with linting messages
-let g:go_auto_type_info = 0
-
-" Run format and imports on save
-let g:go_fmt_autosave = 1
-let g:go_imports_autosave = 1
-
-" Use gofumpt format mode
-let g:go_gopls_gofumpt = 1
-
-" Specify prefix for imports that will be grouped separately
-let g:go_gopls_local = "github.mb-internal.com"
-
-" Misc gopls settings
-let g:go_gopls_complete_unimported = 1
+" Disable all vim-go interaction with gopls in favor of nvim-lsp
+" TODO replace remaing vim-go functionality and remove it, only syntax files are needed
+" TODO https://github.com/ton/vim-alternate instead of GoAlternate
+let g:go_gopls_enabled = 0
+let g:go_code_completion_enabled = 0
+let g:go_echo_go_info = 0
+let g:go_fmt_autosave = 0
+let g:go_imports_autosave = 0
 let g:go_diagnostics_level = 0
-
-" Don't highlight diagnostics from gopls
 let g:go_highlight_diagnostic_errors = 0
 let g:go_highlight_diagnostic_warnings = 0
-
 let g:go_doc_popup_window = 0
-
-" Use gopls
-let g:go_def_mode = 'gopls'
-let g:go_info_mode = 'gopls'
-let g:go_fmt_command = 'gopls'
-let g:go_imports_mode = 'gopls'
+let g:go_auto_type_info = 0
+let g:go_info_mode = 'guru'
 
 " =================================
 " nvim-compe
@@ -340,15 +325,45 @@ lua << EOF
 
 local lspconfig = require'lspconfig'
 
--- TODO https://github.com/golang/tools/blob/master/gopls/doc/settings.md
-lspconfig.gopls.setup{}
+lspconfig.gopls.setup{
+  cmd = { 'gopls', '-remote=auto' };
+  settings = {
+    gopls = {
+      ['gofumpt'] = true;
+      ['local'] = 'github.mb-internal.com';
+      ['linksInHover'] = false;
+    };
+  };
+}
 lspconfig.tsserver.setup{}
 lspconfig.terraformls.setup{
   cmd = {'terraform-lsp'};
 }
 
 -- disable diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
+
+-- override notify to ignore `gopls -remote=auto` exiting with a non-zero exit code
+local notify = vim.notify
+vim.notify = function (msg, log_level, _opts)
+if msg:match('exit code') then return end
+  notify(msg, log_level, _opts)
+end
+
+function organizeImports(wait_ms)
+  local params = vim.lsp.util.make_range_params()
+  params.context = {only = {'source.organizeImports'}}
+  local result = vim.lsp.buf_request_sync(0, 'textDocument/codeAction', params, wait_ms)
+  for _, res in pairs(result or {}) do
+    for _, r in pairs(res.result or {}) do
+      if r.edit then
+        vim.lsp.util.apply_workspace_edit(r.edit)
+      else
+        vim.lsp.buf.execute_command(r.command)
+      end
+    end
+  end
+end
 
 EOF
 
@@ -357,6 +372,12 @@ autocmd Filetype go,typescript,terraform call SetLSPOptions()
 function SetLSPOptions()
   " Use LSP omni-completion.
   setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
+  augroup lspformat
+    autocmd! * <buffer>
+    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
+    autocmd BufWritePre <buffer> lua organizeImports(1000)
+  augroup end
 
   nnoremap <buffer> <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
   nnoremap <buffer> <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
