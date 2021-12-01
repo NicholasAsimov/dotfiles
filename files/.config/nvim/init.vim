@@ -142,7 +142,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
 
 " Frontend
-autocmd FileType javascript,typescript,html,css,scss setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript,typescript,vue,html,css,scss setlocal ts=2 sts=2 sw=2 expandtab
 
 " Enable spellcheck for text files
 autocmd FileType markdown,text,latex,tex setlocal spell
@@ -196,6 +196,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('pangloss/vim-javascript')
   call dein#add('maxmellon/vim-jsx-pretty')
   call dein#add('leafgarland/typescript-vim')
+  call dein#add('leafOfTree/vim-vue-plugin')
   call dein#add('cespare/vim-toml')
   call dein#add('towolf/vim-helm')
   call dein#add('hashivim/vim-terraform')
@@ -237,6 +238,8 @@ let g:go_highlight_diagnostic_warnings = 0
 let g:go_doc_popup_window = 0
 let g:go_auto_type_info = 0
 let g:go_info_mode = 'guru'
+
+let g:go_debug = []
 
 " =================================
 " nvim-compe
@@ -290,6 +293,11 @@ let g:neomake_warning_sign = {'text': '!', 'texthl': 'NeomakeWarningSign'}
 " javascript
 let g:neomake_javascript_enabled_makers = ['eslint']
 autocmd FileType javascript let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
+
+" vue
+let g:neomake_vue_enabled_makers = ['eslint']
+let g:neomake_vue_eslint_args = ['--format=json', '--plugin', 'vue']
+autocmd FileType vue let b:neomake_vue_eslint_exe = nrun#Which('eslint')
 
 " typescript
 let g:neomake_typescript_enabled_makers = ['tsc', 'eslint']
@@ -478,7 +486,25 @@ autocmd BufRead,BufNewFile */templates/*.yaml set ft=yaml
 " =================================
 " vim-terraform
 " =================================
+
 let g:terraform_fmt_on_save = 1
+
+" =================================
+" vim-vue-plugin
+" =================================
+
+function! OnChangeVueSyntax(syntax)
+  " echom 'Syntax is '.a:syntax
+  if a:syntax == 'html'
+    setlocal commentstring=<!--%s-->
+    setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+  elseif a:syntax =~ 'css'
+    setlocal comments=s1:/*,mb:*,ex:*/ commentstring&
+  else
+    setlocal commentstring=//%s
+    setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+  endif
+endfunction
 
 
 " Get used to floating menu in wildmenu and remove this
