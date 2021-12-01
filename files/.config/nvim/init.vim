@@ -330,7 +330,7 @@ lspconfig.gopls.setup{
   settings = {
     gopls = {
       ['gofumpt'] = true;
-      ['local'] = 'github.mb-internal.com';
+      ['local'] = 'github.com/malwarebytes';
       ['linksInHover'] = false;
     };
   };
