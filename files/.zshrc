@@ -141,7 +141,9 @@ source <(kubectl completion zsh)
 source <(helm completion zsh)
 source <(stern --completion=zsh)
 
-complete -o nospace -C /usr/bin/terraform terraform
+autoload -Uz bashcompinit
+bashcompinit
+
 complete -C /usr/bin/aws_completer aws
 
 #------------------------------
