@@ -9,4 +9,4 @@ go.sum
 /proc/
 /sys/
 /var/cache/
-faservices_exp/
+/home/fileserver/
