@@ -36,6 +36,7 @@ export CHROME_BIN=/usr/bin/chromium
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
 export AWS_DEFAULT_PROFILE=nebula-dev-mwb-dev
+export AWS_REGION=us-east-1
 
 #------------------------------
 # Aliases
