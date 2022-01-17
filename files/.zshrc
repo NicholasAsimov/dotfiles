@@ -21,7 +21,7 @@ export LESS=RFX
 
 export GOPATH="$HOME/code/go"
 export NPM_CONFIG_PREFIX="$HOME/.npm-global"
-export PATH="$PATH:$GOPATH/bin:$NPM_CONFIG_PREFIX/bin:$HOME/.cargo/bin:$HOME/.scripts"
+export PATH="$PATH:$GOPATH/bin:$NPM_CONFIG_PREFIX/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.scripts"
 
 # fzf settings
 export FZF_DEFAULT_COMMAND="fd --ignore-file $HOME/.ignore --hidden --follow --type f"
