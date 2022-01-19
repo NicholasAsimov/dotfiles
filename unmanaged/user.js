@@ -11,6 +11,7 @@ user_pref("browser.urlbar.clickSelectsAll", true);
 user_pref("browser.urlbar.doubleClickSelectsAll", false);
 
 // Compact toolbar
+user_pref("browser.compactmode.show", true);
 user_pref("browser.uidensity", 1);
 
 // Move sidebar to the right
