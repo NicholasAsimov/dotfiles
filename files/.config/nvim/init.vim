@@ -192,6 +192,7 @@ if dein#load_state(s:dein_dir)
 
   " Language support
   call dein#add('neovim/nvim-lspconfig')
+  call dein#add('williamboman/nvim-lsp-installer')
   call dein#add('fatih/vim-go', { 'hook_post_update': ':GoUpdateBinaries' })
   call dein#add('pangloss/vim-javascript')
   call dein#add('maxmellon/vim-jsx-pretty')
@@ -290,22 +291,6 @@ call neomake#configure#automake('w')
 let g:neomake_error_sign   = {'text': '!', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '!', 'texthl': 'NeomakeWarningSign'}
 
-" javascript
-let g:neomake_javascript_enabled_makers = ['eslint']
-autocmd FileType javascript let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
-
-" vue
-let g:neomake_vue_enabled_makers = ['eslint']
-let g:neomake_vue_eslint_args = ['--format=json', '--plugin', 'vue']
-autocmd FileType vue let b:neomake_vue_eslint_exe = nrun#Which('eslint')
-
-" typescript
-let g:neomake_typescript_enabled_makers = ['tsc', 'eslint']
-
-autocmd FileType typescript,typescriptreact
-      \ let b:neomake_typescript_tsc_exe = nrun#Which('tsc') |
-      \ let b:neomake_typescript_eslint_exe = nrun#Which('eslint')
-
 " go
 let g:neomake_go_enabled_makers = ['go', 'golangci_lint']
 let g:neomake_go_golangci_lint_args = ['run', '--out-format=line-number', '--print-issued-lines=false', '--config='.$HOME.'/.golangci.yml']
@@ -331,20 +316,74 @@ augroup END
 
 lua << EOF
 
-local lspconfig = require'lspconfig'
+local lsp_installer = require 'nvim-lsp-installer'
 
-lspconfig.gopls.setup{
-  cmd = { 'gopls', '-remote=auto' };
-  settings = {
-    gopls = {
-      ['gofumpt'] = true;
-      ['local'] = 'github.com/malwarebytes';
-      ['linksInHover'] = false;
-    };
-  };
+local servers = {
+  'gopls',
+  'eslint',
+  'tsserver',
+  'terraformls',
 }
-lspconfig.tsserver.setup{}
-lspconfig.terraformls.setup{}
+
+-- Set up buffer-local keymaps (vim.api.nvim_buf_set_keymap()), etc.
+local function on_attach(client, bufnr)
+end
+
+-- Install required LSP servers automatically
+for _, name in pairs(servers) do
+  local server_is_found, server = lsp_installer.get_server(name)
+  if server_is_found and not server:is_installed() then
+    print('Installing ' .. name)
+    server:install()
+  end
+end
+
+-- Provide server-specific settings
+local enhance_server_opts = {
+  ['gopls'] = function(opts)
+    opts.settings = {
+      gopls = {
+        ['gofumpt'] = true,
+        ['local'] = 'github.com/malwarebytes',
+        ['linksInHover'] = false,
+      }
+    }
+  end,
+
+  ['tsserver'] = function(opts)
+    opts.on_attach = function(client, bufnr)
+      client.resolved_capabilities.document_formatting = false
+      on_attach(client, bufnr)
+    end
+  end,
+
+  ['eslint'] = function(opts)
+    opts.on_attach = function(client, bufnr)
+      -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
+      -- the resolved capabilities of the eslint server ourselves!
+      client.resolved_capabilities.document_formatting = true
+      on_attach(client, bufnr)
+    end
+
+    opts.settings = {
+      format = { enable = true }, -- this will enable formatting
+    }
+  end,
+}
+
+lsp_installer.on_server_ready(function(server)
+  -- Specify the default options which we'll use to setup all servers
+  local opts = {
+    on_attach = on_attach,
+  }
+
+  if enhance_server_opts[server.name] then
+    -- Enhance the default opts with the server-specific ones
+    enhance_server_opts[server.name](opts)
+  end
+
+  server:setup(opts)
+end)
 
 -- disable diagnostics
 vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
@@ -373,7 +412,8 @@ end
 
 EOF
 
-autocmd Filetype go,typescript,terraform call SetLSPOptions()
+" TODO move to lua on_attach
+autocmd Filetype go,typescript,typescriptreact,terraform call SetLSPOptions()
 
 function SetLSPOptions()
   " Use LSP omni-completion.
