@@ -302,7 +302,7 @@ autocmd FileType vue let b:neomake_vue_eslint_exe = nrun#Which('eslint')
 " typescript
 let g:neomake_typescript_enabled_makers = ['tsc', 'eslint']
 
-autocmd FileType typescript
+autocmd FileType typescript,typescriptreact
       \ let b:neomake_typescript_tsc_exe = nrun#Which('tsc') |
       \ let b:neomake_typescript_eslint_exe = nrun#Which('eslint')
 
