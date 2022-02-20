@@ -327,6 +327,7 @@ end
 -- This plugin shows diagnostics in echo line
 require("echo-diagnostics").setup{
     show_diagnostic_number = false,
+    show_diagnostic_source = true,
 }
 
 -- This plugin defers diagnostics when editing
