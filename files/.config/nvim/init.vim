@@ -33,8 +33,11 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
-" Increase CursorHold update time to quickly show diagnostics
-set updatetime=300
+" Decrease CursorHold update time to quickly show diagnostics in echo line
+" TODO this requires antoinemadec/FixCursorHold.nvim plugin to decouple updatetime from CursorHold
+" This might not be needed later on, see also: https://neovim.discourse.group/t/psa-dont-rely-on-cursorhold-yet/1813
+set updatetime=4000
+let g:cursorhold_updatetime = 100
 
 " Set leader key
 let mapleader = ","
@@ -178,7 +181,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('hrsh7th/nvim-compe')
   call dein#add('junegunn/fzf', { 'build': './install --bin', 'merged': 0 })
   call dein#add('junegunn/fzf.vim')
-  call dein#add('neomake/neomake')
   call dein#add('tmsvg/pear-tree')
   call dein#add('tpope/vim-commentary')
   call dein#add('tpope/vim-surround')
@@ -197,7 +199,9 @@ if dein#load_state(s:dein_dir)
   " Language support
   call dein#add('neovim/nvim-lspconfig')
   call dein#add('williamboman/nvim-lsp-installer')
+  call dein#add('mfussenegger/nvim-lint')
   call dein#add('seblj/nvim-echo-diagnostics')
+  call dein#add('antoinemadec/FixCursorHold.nvim')
   call dein#add('https://gitlab.com/yorickpeterse/nvim-dd.git')
   call dein#add('fatih/vim-go', { 'hook_post_update': ':GoUpdateBinaries' })
   call dein#add('pangloss/vim-javascript')
@@ -280,26 +284,6 @@ let g:compe = {
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" =================================
-" neomake
-" =================================
-
-let g:neomake_highlight_columns = 0
-
-" Disable showing error message next to the line of code
-let g:neomake_virtualtext_current_error = 0
-
-" Run neomake on buffer save
-call neomake#configure#automake('w')
-
-" Fira Mono doesn't have warning sign symbol (U+26A0) so use exclamation mark
-let g:neomake_error_sign   = {'text': '!', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {'text': '!', 'texthl': 'NeomakeWarningSign'}
-
-" go
-let g:neomake_go_enabled_makers = ['go', 'golangci_lint']
-let g:neomake_go_golangci_lint_args = ['run', '--out-format=line-number', '--print-issued-lines=false', '--config='.$HOME.'/.golangci.yml']
 
 " =================================
 " vim-jsx-pretty
@@ -424,6 +408,10 @@ lsp_installer.on_server_ready(function(server)
   server:setup(opts)
 end)
 
+require('lint').linters_by_ft = {
+  go = {'golangcilint',}
+}
+
 -- override notify to ignore `gopls -remote=auto` exiting with a non-zero exit code
 local notify = vim.notify
 vim.notify = function (msg, log_level, _opts)
@@ -459,6 +447,7 @@ function SetLSPOptions()
     autocmd! * <buffer>
     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
     autocmd BufWritePre <buffer> lua organizeImports(1000)
+    autocmd BufWritePost <buffer> lua require('lint').try_lint()
     autocmd CursorHold * lua require('echo-diagnostics').echo_line_diagnostic()
   augroup end
 
