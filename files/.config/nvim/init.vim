@@ -149,7 +149,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
 
 " Frontend
-autocmd FileType javascript,typescript,vue,html,css,scss setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript,typescript,typescriptreact,vue,html,css,scss setlocal ts=2 sts=2 sw=2 expandtab
 
 " Enable spellcheck for text files
 autocmd FileType markdown,text,latex,tex setlocal spell
@@ -181,7 +181,9 @@ if dein#load_state(s:dein_dir)
   call dein#add('hrsh7th/nvim-compe')
   call dein#add('junegunn/fzf', { 'build': './install --bin', 'merged': 0 })
   call dein#add('junegunn/fzf.vim')
-  call dein#add('tmsvg/pear-tree')
+  call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
+  call dein#add('windwp/nvim-autopairs')
+  call dein#add('windwp/nvim-ts-autotag')
   call dein#add('tpope/vim-commentary')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-unimpaired')
@@ -289,15 +291,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " vim-jsx-pretty
 " =================================
 
-" This code is brought in from vim-jsx-pretty/autoload. It doesn't execute
-" normally as pear-tree overrides it with it's own autoload file for
-" javascript filetype.
-augroup jsx_comment
-  autocmd!
-  autocmd FileType javascript let b:original_commentstring = &l:commentstring
-  autocmd FileType javascript autocmd CursorMoved <buffer> call jsx_pretty#comment#update_commentstring(b:original_commentstring)
-augroup END
-
 " TODO less colorufl syntax? especially props
 
 " =================================
@@ -305,6 +298,64 @@ augroup END
 " =================================
 
 lua << EOF
+
+-- Configure autopairs
+local npairs = require'nvim-autopairs'
+local Rule   = require'nvim-autopairs.rule'
+
+npairs.setup{}
+
+-- add spaces between parentheses
+npairs.add_rules {
+  Rule(' ', ' ')
+    :with_pair(function (opts)
+      local pair = opts.line:sub(opts.col - 1, opts.col)
+      return vim.tbl_contains({ '()', '[]', '{}' }, pair)
+    end),
+  Rule('( ', ' )')
+      :with_pair(function() return false end)
+      :with_move(function(opts)
+          return opts.prev_char:match('.%)') ~= nil
+      end)
+      :use_key(')'),
+  Rule('{ ', ' }')
+      :with_pair(function() return false end)
+      :with_move(function(opts)
+          return opts.prev_char:match('.%}') ~= nil
+      end)
+      :use_key('}'),
+  Rule('[ ', ' ]')
+      :with_pair(function() return false end)
+      :with_move(function(opts)
+          return opts.prev_char:match('.%]') ~= nil
+      end)
+      :use_key(']')
+}
+
+-- Configure Treesitter
+require'nvim-treesitter.configs'.setup {
+  -- TODO change to `ensure_installed = 'maintained',` after enabling treesitter highlighting
+  -- currently treesitter is only used for auto tag closing in html, jsx
+  ensure_installed = { 'javascript', 'html', 'tsx' },
+
+  -- TODO configure treesitter highlighting and get rid of most vim highlight plugins (e.g. javascript, jsx etc.)
+  highlight = {
+    enable = false,
+    disable = { 'c', 'rust' },
+  },
+
+  indent = {
+    enable = false,
+  },
+
+  incremental_selection = {
+    enable = false,
+  },
+
+  autotag = {
+    enable = true,
+  },
+}
 
 -- Configure diagnostics
 vim.diagnostic.config({
@@ -525,17 +576,6 @@ augroup END
 " =================================
 
 cmap w!! SudaWrite %
-
-" =================================
-" pear-tree
-" =================================
-
-let g:pear_tree_repeatable_expand = 0
-let g:pear_tree_smart_openers = 1
-let g:pear_tree_smart_closers = 1
-let g:pear_tree_smart_backspace = 1
-
-imap <Space> <Plug>(PearTreeSpace)
 
 " =================================
 " vim-lion
