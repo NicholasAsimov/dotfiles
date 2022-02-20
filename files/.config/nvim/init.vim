@@ -33,6 +33,9 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
+" Increase CursorHold update time to quickly show diagnostics
+set updatetime=300
+
 " Set leader key
 let mapleader = ","
 
@@ -193,6 +196,8 @@ if dein#load_state(s:dein_dir)
   " Language support
   call dein#add('neovim/nvim-lspconfig')
   call dein#add('williamboman/nvim-lsp-installer')
+  call dein#add('seblj/nvim-echo-diagnostics')
+  call dein#add('https://gitlab.com/yorickpeterse/nvim-dd.git')
   call dein#add('fatih/vim-go', { 'hook_post_update': ':GoUpdateBinaries' })
   call dein#add('pangloss/vim-javascript')
   call dein#add('maxmellon/vim-jsx-pretty')
@@ -316,6 +321,39 @@ augroup END
 
 lua << EOF
 
+-- Configure diagnostics
+vim.diagnostic.config({
+  virtual_text = false,
+  underline = false,
+  update_in_insert = false,
+})
+
+local signs = {
+	{ name = "DiagnosticSignError", text = "!" },
+	{ name = "DiagnosticSignWarn", text = "!!" },
+	{ name = "DiagnosticSignHint", text = "!" },
+	{ name = "DiagnosticSignInfo", text = "I" },
+}
+
+for _, sign in ipairs(signs) do
+	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
+
+-- This plugin shows diagnostics in echo line
+require("echo-diagnostics").setup{
+    show_diagnostic_number = false,
+}
+
+-- This plugin defers diagnostics when editing
+require('dd').setup({
+  -- The time to wait before displaying newly produced diagnostics.
+  timeout = 2000
+})
+
+-- disable diagnostics completely
+--vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
+
+-- Configure LSP
 local lsp_installer = require 'nvim-lsp-installer'
 
 local servers = {
@@ -385,9 +423,6 @@ lsp_installer.on_server_ready(function(server)
   server:setup(opts)
 end)
 
--- disable diagnostics
-vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
-
 -- override notify to ignore `gopls -remote=auto` exiting with a non-zero exit code
 local notify = vim.notify
 vim.notify = function (msg, log_level, _opts)
@@ -419,10 +454,11 @@ function SetLSPOptions()
   " Use LSP omni-completion.
   setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
-  augroup lspformat
+  augroup lsp
     autocmd! * <buffer>
     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
     autocmd BufWritePre <buffer> lua organizeImports(1000)
+    autocmd CursorHold * lua require('echo-diagnostics').echo_line_diagnostic()
   augroup end
 
   nnoremap <buffer> <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
