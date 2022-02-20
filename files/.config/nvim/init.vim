@@ -583,6 +583,23 @@ function! OnChangeVueSyntax(syntax)
   endif
 endfunction
 
+" =================================
+" vim-vue-plugin
+" =================================
+
+function! OnChangeVueSyntax(syntax)
+  " echom 'Syntax is '.a:syntax
+  if a:syntax == 'html'
+    setlocal commentstring=<!--%s-->
+    setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+  elseif a:syntax =~ 'css'
+    setlocal comments=s1:/*,mb:*,ex:*/ commentstring&
+  else
+    setlocal commentstring=//%s
+    setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+  endif
+endfunction
+
 
 " Get used to floating menu in wildmenu and remove this
 set wildoptions=tagfile
