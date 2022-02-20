@@ -131,6 +131,7 @@ set relativenumber
 " Go
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  :w<CR>:vsplit <bar> terminal go run %<CR>
+autocmd FileType go nmap <leader>e  :silent GoRun<CR>:echo<CR>
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>i  <Plug>(go-info)
 autocmd FileType go nmap <Leader>d  <Plug>(go-doc-browser) <bar> :echo "Opened in browser"<CR>
