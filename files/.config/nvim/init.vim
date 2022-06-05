@@ -33,6 +33,9 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
+" Disable u keybind in visual mode that makes selected text lowercase
+vmap u <Nop>
+
 " Decrease CursorHold update time to quickly show diagnostics in echo line
 " TODO this requires antoinemadec/FixCursorHold.nvim plugin to decouple updatetime from CursorHold
 " This might not be needed later on, see also: https://neovim.discourse.group/t/psa-dont-rely-on-cursorhold-yet/1813
