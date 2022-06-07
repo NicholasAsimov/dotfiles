@@ -1,6 +1,7 @@
 [user]
 	name = Nicholas Asimov
 	email = nicholas@asimov.me
+	signingkey = E5E3DA0973526E74
 [credential]
 	# Cache passwords in memory for 30 days
 	helper = cache --timeout=2592000
