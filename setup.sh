@@ -61,6 +61,6 @@ fi
 # Install dein.vim
 if [ ! -d "$HOME/.cache/dein" ]; then
     echo "dein.vim is not installed, installing.."
-    curl -o installer.sh https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
+    curl -o installer.sh https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh
     sh ./installer.sh "$HOME/.cache/dein"
 fi
