@@ -29,6 +29,7 @@ user_pref("extensions.pocket.enabled", false);
 // Enable WebRender and hardware acceleration
 user_pref("gfx.webrender.all", true);
 user_pref("layers.acceleration.force-enabled", true);
+user_pref("media.ffmpeg.vaapi.enabled", true);
 
 // Enable DMA-BUF backends
 user_pref("widget.wayland-dmabuf-vaapi.enabled", true);
