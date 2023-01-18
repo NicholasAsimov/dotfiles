@@ -40,8 +40,8 @@ output * bg $wallpaper_desktop fill
 ### Idle configuration
 exec swayidle -w \
 	timeout 300 'swaylock -f' \
-	timeout 600 'swaymsg "output * dpms off"' \
-		 resume 'swaymsg "output * dpms on"' \
+	timeout 600 'swaymsg "output * power off"' \
+		 resume 'swaymsg "output * power on"' \
 	before-sleep 'swaylock -f'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -96,6 +96,10 @@ exec swayidle -w \
 
     # toggle active window border
     bindsym $mod+o exec swaymsg "border toggle"
+
+    # brightness control
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 
     # volume control
     set $volume_raise amixer set Master 5%+ && pkill -RTMIN+10 i3blocks
