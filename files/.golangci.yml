@@ -45,7 +45,6 @@ linters:
   disable-all: true
   enable:
     - bodyclose
-    - deadcode
     - dupl
     - errcheck
     - exhaustive
@@ -60,11 +59,9 @@ linters:
     - ineffassign
     - misspell
     - staticcheck
-    - structcheck
     - typecheck
     - unconvert
     - unused
-    - varcheck
 
 issues:
   # List of regexps of issue texts to exclude, empty list by default.
