@@ -502,7 +502,7 @@ function SetLSPOptions()
 
   augroup lsp
     autocmd! * <buffer>
-    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
+    autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = false })
     autocmd BufWritePre <buffer> lua organizeImports(1000)
     autocmd BufWritePost <buffer> lua require('lint').try_lint()
     autocmd CursorHold * lua require('echo-diagnostics').echo_line_diagnostic()
