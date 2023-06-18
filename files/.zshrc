@@ -128,6 +128,8 @@ zstyle ':completion:*:kill:*'   force-list always
 zstyle ':completion:*:*:pacman:*' menu yes select
 zstyle ':completion:*:pacman:*' force-list always
 
+zstyle ':completion:*:*:make:*' tag-order 'targets'
+
 # Search through history for previous commands matching everything up to current cursor position.
 # Move the cursor to the end of line after each match.
 autoload -U up-line-or-beginning-search
