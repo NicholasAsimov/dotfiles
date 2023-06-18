@@ -101,6 +101,9 @@ exec swayidle -w \
     bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 
+    # mute microphone
+    bindsym XF86AudioMicMute exec amixer set Capture toggle
+
     # volume control
     set $volume_raise amixer set Master 5%+ && pkill -RTMIN+10 i3blocks
     set $volume_lower amixer set Master 5%- && pkill -RTMIN+10 i3blocks
