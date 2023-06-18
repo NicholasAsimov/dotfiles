@@ -5,6 +5,8 @@
 [credential]
 	# Cache passwords in memory for 30 days
 	helper = cache --timeout=2592000
+[commit]
+	gpgsign = true
 [init]
 	defaultBranch = master
 [push]
