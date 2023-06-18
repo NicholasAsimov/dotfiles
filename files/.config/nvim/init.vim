@@ -477,6 +477,9 @@ if msg:match('exit code') then return end
 end
 
 function organizeImports(wait_ms)
+  if vim.bo.filetype ~= 'go' then
+    return
+  end
   local params = vim.lsp.util.make_range_params(nil, vim.lsp.util._get_offset_encoding())
   params.context = {only = {'source.organizeImports'}}
   local result = vim.lsp.buf_request_sync(0, 'textDocument/codeAction', params, wait_ms)
