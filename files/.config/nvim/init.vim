@@ -303,6 +303,11 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 lua << EOF
 
+-- Disable semantic highlighting
+for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+  vim.api.nvim_set_hl(0, group, {})
+end
+
 -- Configure autopairs
 local npairs = require'nvim-autopairs'
 local Rule   = require'nvim-autopairs.rule'
