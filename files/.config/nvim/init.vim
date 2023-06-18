@@ -155,7 +155,7 @@ autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType javascript,typescript,typescriptreact,vue,html,css,scss setlocal ts=2 sts=2 sw=2 expandtab
 
 " Enable spellcheck for text files
-autocmd FileType markdown,text,latex,tex setlocal spell
+autocmd FileType markdown,text,latex,tex,gitcommit setlocal spell
 
 " Autosave file when running make
 set autowrite
