@@ -2,7 +2,7 @@
 # History settings
 #------------------------------
 HISTFILE=~/.histfile
-HISTSIZE=9999
+HISTSIZE=99999
 SAVEHIST=999999
 
 #------------------------------
